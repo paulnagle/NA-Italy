@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar color="danger">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{'GOOGLE_MAPS' | translate }}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <agm-map
+    [latitude]="latitude"
+    [longitude]="longitude"
+    [zoom]="zoom"
+    [disableDefaultUI]="false"
+    [zoomControl]="true">
+    <agm-marker-cluster imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m">
+<!--      <agm-marker-spider [keepSpiderfied]="true" (format)="testEvent('format', $event)"
+                   (spiderfy)="testEvent('spiderfy', $event)" (unspiderfy)="testEvent('unspiderfy', $event)">  !-->
+      <agm-marker
+        *ngFor="let marker of meetingList; let i = index"
+        [latitude]="marker.latitude"
+        [longitude]="marker.longitude"
+        [iconUrl]="'assets/img/marker-na.png'">
+<!--        (markerClick)="testEvent('markerClick', $event)">  !-->
+        <agm-info-window>
+          <h1>{{marker.meeting_name}}</h1>
+          <p><b>{{marker.weekday_tinyint}}  {{marker.start_time}}</b></p>
+          {{marker.location_text}}<br>
+          {{marker.location_street}}<br>
+          {{marker.location_sub_province}}<br>
+          {{marker.location_info}}<br>
+          <button ion-button small (click)="openMapsLink(marker.latitude , marker.longitude)"><ion-icon name="map"></ion-icon>&nbsp;Map</button>
+        </agm-info-window>
+      </agm-marker>
+<!--      </agm-marker-spider>  !-->
+    </agm-marker-cluster>
+  </agm-map>
+</ion-content>
