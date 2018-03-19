@@ -42,7 +42,7 @@ export class MyApp {
 				this.translate.use(value);
 			} else {
 				this.translate.use('it');
-				storage.set('language', 'it);
+				storage.set('language', 'it');
 			}
 		});
 
