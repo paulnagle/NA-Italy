@@ -32,7 +32,7 @@ export class GoogleMapsComponent {
   longitude: number = 11.2609586;
 
   dayOfWeekAsString(dayIndex) {
-  	return ["not a day?", "Sun", "Mon","Tue","Wed","Thu","Fri","Sat"][dayIndex];
+  	return ["not a day?", "Do", "Lun","Mar","Mer","Gio","Ven","Sab"][dayIndex];
   }
 
   getAllMeetings(){

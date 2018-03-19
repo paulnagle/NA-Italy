@@ -41,8 +41,8 @@ export class MyApp {
 			if (value) {
 				this.translate.use(value);
 			} else {
-				this.translate.use('en');
-				storage.set('language', 'en');
+				this.translate.use('it');
+				storage.set('language', 'it');
 			}
 		});
 
