@@ -1,8 +1,8 @@
 {
-  "name": "NAIreland",
-  "version": "4.0.0",
+  "name": "NAItaly",
+  "version": "1.0.0",
   "author": "Paul Nagle",
-  "homepage": "http://www.na-ireland.org",
+  "homepage": "http://www.na-italia.org",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
