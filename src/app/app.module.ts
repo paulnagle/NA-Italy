@@ -16,8 +16,7 @@ import { JustfortodayModule } from '../pages/justfortoday/justfortoday.module';
 
 import { MyApp } from './app.component';
 import { JftProvider } from '../providers/jft/jft';
-import { AudioProvider } from '../providers/audio/audio';
-import { Insomnia } from '@ionic-native/insomnia';
+import { MeetingListProvider } from '../providers/meeting-list/meeting-list';
 
 @NgModule({
   declarations: [
@@ -32,7 +31,8 @@ import { Insomnia } from '@ionic-native/insomnia';
     SettingsModule,
     ContactModule,
     DatetimeModule,
-    JustfortodayModule
+    JustfortodayModule,
+    MeetinglistModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -42,8 +42,7 @@ import { Insomnia } from '@ionic-native/insomnia';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     JftProvider,
     InAppBrowser,
-    AudioProvider,
-    Insomnia
+    MeetingListProvider
     ]
 })
 export class AppModule {}

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+
 @Injectable()
 export class JftProvider {
 
@@ -8,10 +9,14 @@ export class JftProvider {
     console.log('Hello JftProvider Provider');
   }
 
-  getJFTUrl : string = "http://jftna.org/jft/";
+  getJFTUrl : string = "https://na-italia.org/solo-per-oggi";
 
   getJFT() {
-    return this.http.get(this.getJFTUrl, {responseType: 'text'});
+    var JFT = this.http.get(this.getJFTUrl, {responseType: 'text'});
+
+
+
+    return JFT;
   }
 
 }
