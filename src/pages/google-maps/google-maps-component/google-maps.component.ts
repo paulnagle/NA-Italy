@@ -16,7 +16,7 @@ export class GoogleMapsComponent {
               public plt: Platform) {
 
     this.loader = this.loadingCtrl.create({
-          content: "Loading Meeting Map...",
+          content: "Caricamento mappa...",
           duration: 10000
         });
     this.loader.present();
@@ -28,8 +28,8 @@ export class GoogleMapsComponent {
   zoom: number = 8;
 
   // Google Map center
-  latitude: number = 53.341318;
-  longitude: number = -6.270205;
+  latitude: number = 43.7782364;
+  longitude: number = 11.2609586;
 
   dayOfWeekAsString(dayIndex) {
   	return ["not a day?", "Sun", "Mon","Tue","Wed","Thu","Fri","Sat"][dayIndex];

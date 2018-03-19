@@ -28,11 +28,21 @@
         <agm-info-window>
           <h1>{{marker.meeting_name}}</h1>
           <p><b>{{marker.weekday_tinyint}}  {{marker.start_time}}</b></p>
-          {{marker.location_text}}<br>
-          {{marker.location_street}}<br>
-          {{marker.location_sub_province}}<br>
-          {{marker.location_info}}<br>
-          <button ion-button small (click)="openMapsLink(marker.latitude , marker.longitude)"><ion-icon name="map"></ion-icon>&nbsp;Map</button>
+          <div *ngIf="marker.location_text ">{{marker.location_text}}<br></div>
+          <div *ngIf="marker.location_street ">{{marker.location_street}}<br></div>
+          <div *ngIf="marker.location_city_subsection ">{{marker.location_city_subsection}}<br></div>
+          <div *ngIf="marker.location_neighbourhood ">{{marker.location_neighbourhood}}<br></div>
+          <div *ngIf="marker.location_municipality ">{{marker.location_municipality}}<br></div>
+          <div *ngIf="marker.location_sub_province ">{{marker.location_sub_province}}<br></div>
+          <div *ngIf="marker.location_province ">{{marker.location_province}}<br></div>
+          <div *ngIf="marker.location_code_1 ">{{marker.location_code_1}}<br></div>
+          <div *ngIf="marker.location_info ">{{marker.location_info}}<br></div>
+          <div *ngIf="marker.comments ">{{marker.comments}}<br></div>
+          <div *ngIf="marker.contact_phone_1 ">{{marker.contact_phone_1}}<br></div>
+          <div *ngIf="marker.contact_email_1 ">{{marker.contact_email_1}}<br></div>
+          <div *ngIf="marker.train_lines ">Train: {{marker.train_lines}}<br></div>
+          <div *ngIf="marker.bus_lines ">Bus: {{marker.bus_lines}}<br></div>
+          <button ion-button small (click)="openMapsLink(marker.latitude , marker.longitude)"><ion-icon name="map"></ion-icon>&nbsp;Mappa</button>
         </agm-info-window>
       </agm-marker>
 <!--      </agm-marker-spider>  !-->

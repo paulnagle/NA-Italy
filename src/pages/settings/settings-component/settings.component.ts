@@ -20,7 +20,7 @@ export class SettingsComponent {
 	        if(value) {
 	        	this.language = value;
 	        } else {
-	        	this.language = 'en';
+	        	this.language = 'it';
 	        }
 	    });
 	}
