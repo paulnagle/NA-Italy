@@ -16,7 +16,7 @@ export class JustfortodayComponent {
 
   constructor(private JftProvider : JftProvider , public loadingCtrl: LoadingController) {
     this.loader = this.loadingCtrl.create({
-          content: "Loading Just For Today...",
+          content: "Caricamento Solo Per Oggi...",
           duration: 10000
         });
     this.loader.present();
