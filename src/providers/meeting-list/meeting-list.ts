@@ -10,7 +10,7 @@ export class MeetingListProvider {
     console.log('Hello MeetingListProvider Provider');
   }
 
-  getApiUrl : string = "https://na-italia.info/main_server/client_interface/json/?switcher=GetSearchResults";
+  getApiUrl : string = "https://na-italia.info/main_server/client_interface/json/?switcher=GetSearchResults&sort_keys=longitude,latitude";
 
   getMeetings() {
     return this.http.get(this.getApiUrl);
