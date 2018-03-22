@@ -49,13 +49,11 @@ export class GoogleMapsComponent {
       // If lat/longs overlap, move one by a couple of meters
       var i : any;
       for (i=0; i < this.meetingList.length -1; i++) {
-
-          if (this.meetingList[i].longitude == this.meetingList[i+1].longitude) {
-            if (this.meetingList[i].latitude == this.meetingList[i+1].latitude){
-              this.meetingList[i].longitude = this.meetingList[i].longitude  + (Math.random() -.8) / 1500;
-              this.meetingList[i].latitude = this.meetingList[i].latitude  + (Math.random() -.8) / 1500;
-            }
+        if (this.meetingList[i].longitude == this.meetingList[i+1].longitude) {
+          if (this.meetingList[i].latitude == this.meetingList[i+1].latitude) {
+            this.meetingList[i].longitude = this.meetingList[i].longitude  + (Math.random() / 15000);
           }
+        }
       }
 
       this.loader.dismiss();
