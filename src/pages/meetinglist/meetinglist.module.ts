@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../../app/shared/shared.module';
 import { MeetinglistComponent } from './meetinglist-component/meetinglist.component';
+import { PipesModule } from '../../pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -9,7 +10,8 @@ import { MeetinglistComponent } from './meetinglist-component/meetinglist.compon
   ],
   imports: [
   	CommonModule,
-  	SharedModule
+  	SharedModule,
+    PipesModule
   ],
   exports: [
     MeetinglistComponent
