@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { MeetingListProvider } from '../../../providers/meeting-list/meeting-list';
+import { ServiceGroupsProvider } from '../../../providers/service-groups/service-groups';
 
 import { LoadingController } from 'ionic-angular';
 
@@ -14,8 +15,10 @@ export class MeetinglistComponent {
   meetingsListGroupingOne : string;
   shownGroup = null;
   loader = null;
+  serviceGroupNames : any;
 
   constructor(private MeetingListProvider : MeetingListProvider,
+              private ServiceGroupsProvider : ServiceGroupsProvider,
               public loadingCtrl: LoadingController,
               public plt: Platform) {
 
@@ -28,7 +31,9 @@ export class MeetinglistComponent {
 //    this.meetingsListGroupingOne = 'location_sub_province';
 //    this.meetingsListGroupingOne = 'weekday_tinyint';
     this.meetingsListGroupingOne = 'service_body_bigint';
-    this.getAllMeetings();
+
+    this.getServiceGroupNames();
+
 
   }
 
@@ -44,13 +49,32 @@ export class MeetinglistComponent {
     };
   }
 
+
+  getServiceGroupNames() {
+    this.ServiceGroupsProvider.getAllServiceGroups().subscribe((serviceGroupData)=>{
+      this.serviceGroupNames = serviceGroupData;
+      console.log(this.serviceGroupNames);
+      this.getAllMeetings();
+    });
+  }
+
+  getServiceNameFromID(id) {
+    var obj = this.serviceGroupNames.find(function (obj) { return obj.id === id; });
+    console.log("ID: " + id + "  NAME: " + obj.name);
+    return obj.name;
+  }
+
   getAllMeetings(){
     this.MeetingListProvider.getMeetingsSortedByDay().subscribe((data)=>{
 
       // Get all the meeting list as flat json
       this.meetingList = data;
-      this.meetingList  = this.meetingList.filter(meeting => meeting.contact_phone_1 = meeting.contact_phone_1.toString().replace("#@-@#", " : "));
-      this.meetingList  = this.meetingList.filter(meeting => meeting.contact_email_1 = meeting.contact_email_1.toString().replace("#@-@#", " : "));
+
+      this.meetingList = this.meetingList.filter(meeting => meeting.service_body_bigint = this.getServiceNameFromID(meeting.service_body_bigint));
+
+//      this.meetingList = this.meetingList.filter(meeting => meeting.contact_phone_1 = meeting.contact_phone_1.toString().replace("#@-@#", " : "));
+//      this.meetingList = this.meetingList.filter(meeting => meeting.contact_email_1 = meeting.contact_email_1.toString().replace("#@-@#", " : "));
+
 
       this.groupMeetings();
       this.loader.dismiss();
