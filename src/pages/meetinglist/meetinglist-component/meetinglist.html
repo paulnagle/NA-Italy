@@ -11,35 +11,44 @@
 
 <ion-content>
 
-  <ion-item-divider color="dark"  text-wrap (click)="toggleBrescia(i)" [ngClass]="{active: isBresciaShown(i)}"><h1><b>Brescia</b></h1>
-    <ion-icon color="success" item-right [name]="isBresciaShown(i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
-  </ion-item-divider>
-  <div *ngIf="isBresciaShown(i)">
-    <ion-list *ngFor="let meeting of BresciaList"  >
-      <ion-card>
-        <ion-card-header>
+  <div *ngFor="let group1 of meetingList; let i = index" (click)="toggleGroup(i)" [ngClass]="{active: isGroupShown(i)}">
+    <div *ngIf="meetingsListGroupingOne === 'service_body_bigint'">
+      <ion-item-divider color="dark"><h3>{{ group1[0].service_body_bigint }}</h3>
+        <ion-icon color="success" item-right [name]="isGroupShown(i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+      </ion-item-divider>
+    </div>
 
-            <div ngSwitch="{{ meeting.weekday_tinyint }}">
+    <div *ngIf="meetingsListGroupingOne === 'location_sub_province'">
+      <ion-item-divider color="dark"><h3>{{ group1[0].location_sub_province }}</h3>
+      <ion-icon color="success" item-right [name]="isGroupShown(i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+    </ion-item-divider>
+    </div>
+
+    <div *ngIf="isGroupShown(i)">
+      <ion-list *ngFor="let group2 of group1; let j = index">
+      <ion-card text-wrap>
+        <ion-card-header>
+            <div ngSwitch="{{ group2.weekday_tinyint }}">
               <div *ngSwitchCase="'1'" [ngClass]="'one'">
-                <ion-badge color="Teal"><b>Domenica   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
+                <ion-badge color="Teal"><b>Lunedì   {{ group2.start_time | slice:0:5 }} </b></ion-badge>
               </div>
               <div *ngSwitchCase="'2'" [ngClass]="'one'">
-                <ion-badge color="Lime"><b>Lunedi   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
+                <ion-badge color="Lime"><b>Martedì   {{ group2.start_time | slice:0:5 }} </b></ion-badge>
               </div>
               <div *ngSwitchCase="'3'" [ngClass]="'one'">
-                <ion-badge color="Purple"><b>Martedì   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
+                <ion-badge color="Purple"><b>Mercoledì   {{ group2.start_time | slice:0:5 }} </b></ion-badge>
               </div>
               <div *ngSwitchCase="'4'" [ngClass]="'one'">
-                <ion-badge color="Brown"><b>Mercoledì   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
+                <ion-badge color="Brown"><b>Giovedì   {{ group2.start_time | slice:0:5 }} </b></ion-badge>
               </div>
               <div *ngSwitchCase="'5'" [ngClass]="'one'">
-                <ion-badge color="Pink"><b>Giovedi   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
+                <ion-badge color="Pink"><b>Venerdì   {{ group2.start_time | slice:0:5 }} </b></ion-badge>
               </div>
               <div *ngSwitchCase="'6'" [ngClass]="'one'">
-                <ion-badge color="Orange"><b>Venerdì   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
+                <ion-badge color="Orange"><b>Sabato   {{ group2.start_time | slice:0:5 }} </b></ion-badge>
               </div>
               <div *ngSwitchCase="'7'" [ngClass]="'one'">
-                <ion-badge color="Green"><b>Sabato   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
+                <ion-badge color="Green"><b>Domenica   {{ group2.start_time | slice:0:5 }} </b></ion-badge>
               </div>
           	  <div *ngSwitchDefault>Nothing Found.</div>
           </div>
@@ -49,26 +58,26 @@
             <ion-row>
 
               <ion-col col-10 >
-                <h1>{{meeting.meeting_name}}</h1>
-                <div *ngIf="meeting.location_text ">{{meeting.location_text}}<br></div>
-                <div *ngIf="meeting.location_street ">{{meeting.location_street}}<br></div>
-                <div *ngIf="meeting.location_city_subsection ">{{meeting.location_city_subsection}}<br></div>
-                <div *ngIf="meeting.location_neighbourhood ">{{meeting.location_neighbourhood}}<br></div>
-                <div *ngIf="meeting.location_municipality ">{{meeting.location_municipality}}<br></div>
-                <div *ngIf="meeting.location_sub_province ">{{meeting.location_sub_province}}<br></div>
-                <div *ngIf="meeting.location_province ">{{meeting.location_province}}<br></div>
-                <div *ngIf="meeting.location_code_1 ">{{meeting.location_code_1}}<br></div>
-                <div *ngIf="meeting.location_info ">{{meeting.location_info}}<br></div>
-                <div *ngIf="meeting.comments ">{{meeting.comments}}<br></div>
-                <div *ngIf="meeting.contact_phone_1 ">{{meeting.contact_phone_1}}<br></div>
-                <div *ngIf="meeting.contact_email_1 ">{{meeting.contact_email_1}}<br></div>
-                <div *ngIf="meeting.train_lines">Train: {{meeting.train_lines}}<br></div>
-                <div *ngIf="meeting.bus_lines">Bus: {{meeting.bus_lines}}<br></div>
-                <div *ngIf="meeting.formats"><i>{{meeting.formats}}</i><br></div>
+                <h1>{{group2.meeting_name}}</h1>
+                <div *ngIf="group2.location_text">{{group2.location_text}}<br></div>
+                <div *ngIf="group2.location_street">{{group2.location_street}}<br></div>
+                <div *ngIf="group2.location_city_subsection">{{group2.location_city_subsection}}<br></div>
+                <div *ngIf="group2.location_neighbourhood">{{group2.location_neighbourhood}}<br></div>
+                <div *ngIf="group2.location_municipality">{{group2.location_municipality}}<br></div>
+                <div *ngIf="group2.location_sub_province">{{group2.location_sub_province}}<br></div>
+                <div *ngIf="group2.location_province">{{group2.location_province}}<br></div>
+                <div *ngIf="group2.location_code_1">{{group2.location_code_1}}<br></div>
+                <div *ngIf="group2.location_info">{{group2.location_info}}<br></div>
+                <div *ngIf="group2.comments">{{group2.comments}}<br></div>
+                <div *ngIf="group2.contact_phone_1">{{group2.contact_phone_1}}<br></div>
+                <div *ngIf="group2.contact_email_1">{{group2.contact_email_1}}<br></div>
+                <div *ngIf="group2.train_lines">{{group2.train_lines}}<br></div>
+                <div *ngIf="group2.bus_lines">{{group2.bus_lines}}<br></div>
+                <div *ngIf="group2.formats"><i>Formati: {{group2.formats}}</i><br></div>
               </ion-col>
 
               <ion-col>
-                <button ion-button  (click)="openMapsLink(meeting.latitude , meeting.longitude)"><ion-icon name="map"> </ion-icon>&nbsp;Mappa</button>
+                <button ion-button  (click)="openMapsLink(group2.latitude , group2.longitude)"><ion-icon name="map"> </ion-icon>&nbsp;Mappa</button>
               </ion-col>
 
             </ion-row>
@@ -78,408 +87,6 @@
     </ion-list>
   </div>
 
-  <ion-item-divider color="dark"  text-wrap (click)="toggleCentroSud(i)" [ngClass]="{active: isCentroSudShown(i)}"><h1><b>CentroSud</b></h1>
-    <ion-icon color="success" item-right [name]="isCentroSudShown(i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
-  </ion-item-divider>
-  <div *ngIf="isCentroSudShown(i)">
-    <ion-list *ngFor="let meeting of CentroSudList"  >
-      <ion-card>
-        <ion-card-header>
-
-            <div ngSwitch="{{ meeting.weekday_tinyint }}">
-              <div *ngSwitchCase="'1'" [ngClass]="'one'">
-                <ion-badge color="Teal"><b>Domenica   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchCase="'2'" [ngClass]="'one'">
-                <ion-badge color="Lime"><b>Lunedi   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchCase="'3'" [ngClass]="'one'">
-                <ion-badge color="Purple"><b>Martedì   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchCase="'4'" [ngClass]="'one'">
-                <ion-badge color="Brown"><b>Mercoledì   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchCase="'5'" [ngClass]="'one'">
-                <ion-badge color="Pink"><b>Giovedi   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchCase="'6'" [ngClass]="'one'">
-                <ion-badge color="Orange"><b>Venerdì   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchCase="'7'" [ngClass]="'one'">
-                <ion-badge color="Green"><b>Sabato   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-          	  <div *ngSwitchDefault>Nothing Found.</div>
-          </div>
-        </ion-card-header>
-        <ion-card-content>
-          <ion-grid>
-            <ion-row>
-
-              <ion-col col-10 >
-                <h1>{{meeting.meeting_name}}</h1>
-                <div *ngIf="meeting.location_text ">{{meeting.location_text}}<br></div>
-                <div *ngIf="meeting.location_street ">{{meeting.location_street}}<br></div>
-                <div *ngIf="meeting.location_city_subsection ">{{meeting.location_city_subsection}}<br></div>
-                <div *ngIf="meeting.location_neighbourhood ">{{meeting.location_neighbourhood}}<br></div>
-                <div *ngIf="meeting.location_municipality ">{{meeting.location_municipality}}<br></div>
-                <div *ngIf="meeting.location_sub_province ">{{meeting.location_sub_province}}<br></div>
-                <div *ngIf="meeting.location_province ">{{meeting.location_province}}<br></div>
-                <div *ngIf="meeting.location_code_1 ">{{meeting.location_code_1}}<br></div>
-                <div *ngIf="meeting.location_info ">{{meeting.location_info}}<br></div>
-                <div *ngIf="meeting.comments ">{{meeting.comments}}<br></div>
-                <div *ngIf="meeting.contact_phone_1 ">{{meeting.contact_phone_1}}<br></div>
-                <div *ngIf="meeting.contact_email_1 ">{{meeting.contact_email_1}}<br></div>
-                <div *ngIf="meeting.train_lines">Train: {{meeting.train_lines}}<br></div>
-                <div *ngIf="meeting.bus_lines">Bus: {{meeting.bus_lines}}<br></div>
-                <div *ngIf="meeting.formats"><i>{{meeting.formats}}</i><br></div>
-              </ion-col>
-
-              <ion-col>
-                <button ion-button  (click)="openMapsLink(meeting.latitude , meeting.longitude)"><ion-icon name="map"> </ion-icon>&nbsp;Map</button>
-              </ion-col>
-
-            </ion-row>
-          </ion-grid>
-         </ion-card-content>
-      </ion-card>
-    </ion-list>
-  </div>
-
-  <ion-item-divider color="dark"  text-wrap (click)="toggleNord(i)" [ngClass]="{active: isNordShown(i)}"><h1><b>Nord</b></h1>
-    <ion-icon color="success" item-right [name]="isNordShown(i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
-  </ion-item-divider>
-  <div *ngIf="isNordShown(i)">
-    <ion-list *ngFor="let meeting of NordList"  >
-      <ion-card>
-        <ion-card-header>
-
-            <div ngSwitch="{{ meeting.weekday_tinyint }}">
-              <div *ngSwitchCase="'1'" [ngClass]="'one'">
-                <ion-badge color="Teal"><b>Domenica   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchCase="'2'" [ngClass]="'one'">
-                <ion-badge color="Lime"><b>Lunedi   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchCase="'3'" [ngClass]="'one'">
-                <ion-badge color="Purple"><b>Martedì   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchCase="'4'" [ngClass]="'one'">
-                <ion-badge color="Brown"><b>Mercoledì   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchCase="'5'" [ngClass]="'one'">
-                <ion-badge color="Pink"><b>Giovedi   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchCase="'6'" [ngClass]="'one'">
-                <ion-badge color="Orange"><b>Venerdì   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchCase="'7'" [ngClass]="'one'">
-                <ion-badge color="Green"><b>Sabato   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchDefault>Nothing Found.</div>
-          </div>
-        </ion-card-header>
-        <ion-card-content>
-          <ion-grid>
-            <ion-row>
-
-              <ion-col col-10 >
-                <h1>{{meeting.meeting_name}}</h1>
-                <div *ngIf="meeting.location_text ">{{meeting.location_text}}<br></div>
-                <div *ngIf="meeting.location_street ">{{meeting.location_street}}<br></div>
-                <div *ngIf="meeting.location_city_subsection ">{{meeting.location_city_subsection}}<br></div>
-                <div *ngIf="meeting.location_neighbourhood ">{{meeting.location_neighbourhood}}<br></div>
-                <div *ngIf="meeting.location_municipality ">{{meeting.location_municipality}}<br></div>
-                <div *ngIf="meeting.location_sub_province ">{{meeting.location_sub_province}}<br></div>
-                <div *ngIf="meeting.location_province ">{{meeting.location_province}}<br></div>
-                <div *ngIf="meeting.location_code_1 ">{{meeting.location_code_1}}<br></div>
-                <div *ngIf="meeting.location_info ">{{meeting.location_info}}<br></div>
-                <div *ngIf="meeting.comments ">{{meeting.comments}}<br></div>
-                <div *ngIf="meeting.contact_phone_1 ">{{meeting.contact_phone_1}}<br></div>
-                <div *ngIf="meeting.contact_email_1 ">{{meeting.contact_email_1}}<br></div>
-                <div *ngIf="meeting.train_lines">Train: {{meeting.train_lines}}<br></div>
-                <div *ngIf="meeting.bus_lines">Bus: {{meeting.bus_lines}}<br></div>
-                <div *ngIf="meeting.formats"><i>{{meeting.formats}}</i><br></div>
-              </ion-col>
-
-              <ion-col>
-                <button ion-button  (click)="openMapsLink(meeting.latitude , meeting.longitude)"><ion-icon name="map"> </ion-icon>&nbsp;Map</button>
-              </ion-col>
-
-            </ion-row>
-          </ion-grid>
-         </ion-card-content>
-      </ion-card>
-    </ion-list>
-  </div>
-
-  <ion-item-divider color="dark"  text-wrap (click)="toggleNordOvest(i)" [ngClass]="{active: isNordOvestShown(i)}"><h1><b>NordOvest</b></h1>
-    <ion-icon color="success" item-right [name]="isNordOvestShown(i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
-  </ion-item-divider>
-  <div *ngIf="isNordOvestShown(i)">
-    <ion-list *ngFor="let meeting of NordOvestList"  >
-      <ion-card>
-        <ion-card-header>
-
-            <div ngSwitch="{{ meeting.weekday_tinyint }}">
-              <div *ngSwitchCase="'1'" [ngClass]="'one'">
-                <ion-badge color="Teal"><b>Domenica   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchCase="'2'" [ngClass]="'one'">
-                <ion-badge color="Lime"><b>Lunedi   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchCase="'3'" [ngClass]="'one'">
-                <ion-badge color="Purple"><b>Martedì   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchCase="'4'" [ngClass]="'one'">
-                <ion-badge color="Brown"><b>Mercoledì   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchCase="'5'" [ngClass]="'one'">
-                <ion-badge color="Pink"><b>Giovedi   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchCase="'6'" [ngClass]="'one'">
-                <ion-badge color="Orange"><b>Venerdì   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchCase="'7'" [ngClass]="'one'">
-                <ion-badge color="Green"><b>Sabato   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchDefault>Nothing Found.</div>
-          </div>
-        </ion-card-header>
-        <ion-card-content>
-          <ion-grid>
-            <ion-row>
-
-              <ion-col col-10 >
-                <h1>{{meeting.meeting_name}}</h1>
-                <div *ngIf="meeting.location_text ">{{meeting.location_text}}<br></div>
-                <div *ngIf="meeting.location_street ">{{meeting.location_street}}<br></div>
-                <div *ngIf="meeting.location_city_subsection ">{{meeting.location_city_subsection}}<br></div>
-                <div *ngIf="meeting.location_neighbourhood ">{{meeting.location_neighbourhood}}<br></div>
-                <div *ngIf="meeting.location_municipality ">{{meeting.location_municipality}}<br></div>
-                <div *ngIf="meeting.location_sub_province ">{{meeting.location_sub_province}}<br></div>
-                <div *ngIf="meeting.location_province ">{{meeting.location_province}}<br></div>
-                <div *ngIf="meeting.location_code_1 ">{{meeting.location_code_1}}<br></div>
-                <div *ngIf="meeting.location_info ">{{meeting.location_info}}<br></div>
-                <div *ngIf="meeting.comments ">{{meeting.comments}}<br></div>
-                <div *ngIf="meeting.contact_phone_1 ">{{meeting.contact_phone_1}}<br></div>
-                <div *ngIf="meeting.contact_email_1 ">{{meeting.contact_email_1}}<br></div>
-                <div *ngIf="meeting.train_lines">Train: {{meeting.train_lines}}<br></div>
-                <div *ngIf="meeting.bus_lines">Bus: {{meeting.bus_lines}}<br></div>
-                <div *ngIf="meeting.formats"><i>{{meeting.formats}}</i><br></div>
-              </ion-col>
-
-              <ion-col>
-                <button ion-button  (click)="openMapsLink(meeting.latitude , meeting.longitude)"><ion-icon name="map"> </ion-icon>&nbsp;Map</button>
-              </ion-col>
-
-            </ion-row>
-          </ion-grid>
-         </ion-card-content>
-      </ion-card>
-    </ion-list>
-  </div>
-
-  <ion-item-divider color="dark"  text-wrap (click)="toggleToscana(i)" [ngClass]="{active: isToscanaShown(i)}"><h1><b>Toscana</b></h1>
-    <ion-icon color="success" item-right [name]="isToscanaShown(i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
-  </ion-item-divider>
-  <div *ngIf="isToscanaShown(i)">
-    <ion-list *ngFor="let meeting of ToscanaList"  >
-      <ion-card>
-        <ion-card-header>
-
-            <div ngSwitch="{{ meeting.weekday_tinyint }}">
-              <div *ngSwitchCase="'1'" [ngClass]="'one'">
-                <ion-badge color="Teal"><b>Domenica   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchCase="'2'" [ngClass]="'one'">
-                <ion-badge color="Lime"><b>Lunedi   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchCase="'3'" [ngClass]="'one'">
-                <ion-badge color="Purple"><b>Martedì   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchCase="'4'" [ngClass]="'one'">
-                <ion-badge color="Brown"><b>Mercoledì   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchCase="'5'" [ngClass]="'one'">
-                <ion-badge color="Pink"><b>Giovedi   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchCase="'6'" [ngClass]="'one'">
-                <ion-badge color="Orange"><b>Venerdì   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchCase="'7'" [ngClass]="'one'">
-                <ion-badge color="Green"><b>Sabato   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchDefault>Nothing Found.</div>
-          </div>
-        </ion-card-header>
-        <ion-card-content>
-          <ion-grid>
-            <ion-row>
-
-              <ion-col col-10 >
-                <h1>{{meeting.meeting_name}}</h1>
-                <div *ngIf="meeting.location_text ">{{meeting.location_text}}<br></div>
-                <div *ngIf="meeting.location_street ">{{meeting.location_street}}<br></div>
-                <div *ngIf="meeting.location_city_subsection ">{{meeting.location_city_subsection}}<br></div>
-                <div *ngIf="meeting.location_neighbourhood ">{{meeting.location_neighbourhood}}<br></div>
-                <div *ngIf="meeting.location_municipality ">{{meeting.location_municipality}}<br></div>
-                <div *ngIf="meeting.location_sub_province ">{{meeting.location_sub_province}}<br></div>
-                <div *ngIf="meeting.location_province ">{{meeting.location_province}}<br></div>
-                <div *ngIf="meeting.location_code_1 ">{{meeting.location_code_1}}<br></div>
-                <div *ngIf="meeting.location_info ">{{meeting.location_info}}<br></div>
-                <div *ngIf="meeting.comments ">{{meeting.comments}}<br></div>
-                <div *ngIf="meeting.contact_phone_1 ">{{meeting.contact_phone_1}}<br></div>
-                <div *ngIf="meeting.contact_email_1 ">{{meeting.contact_email_1}}<br></div>
-                <div *ngIf="meeting.train_lines">Train: {{meeting.train_lines}}<br></div>
-                <div *ngIf="meeting.bus_lines">Bus: {{meeting.bus_lines}}<br></div>
-                <div *ngIf="meeting.formats"><i>{{meeting.formats}}</i><br></div>
-              </ion-col>
-
-              <ion-col>
-                <button ion-button  (click)="openMapsLink(meeting.latitude , meeting.longitude)"><ion-icon name="map"> </ion-icon>&nbsp;Map</button>
-              </ion-col>
-
-            </ion-row>
-          </ion-grid>
-         </ion-card-content>
-      </ion-card>
-    </ion-list>
-  </div>
-
-  <ion-item-divider color="dark"  text-wrap (click)="toggleVeneto(i)" [ngClass]="{active: isVenetoShown(i)}"><h1><b>Veneto</b></h1>
-    <ion-icon color="success" item-right [name]="isVenetoShown(i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
-  </ion-item-divider>
-  <div *ngIf="isVenetoShown(i)">
-    <ion-list *ngFor="let meeting of VenetoList"  >
-      <ion-card>
-        <ion-card-header>
-
-            <div ngSwitch="{{ meeting.weekday_tinyint }}">
-              <div *ngSwitchCase="'1'" [ngClass]="'one'">
-                <ion-badge color="Teal"><b>Domenica   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchCase="'2'" [ngClass]="'one'">
-                <ion-badge color="Lime"><b>Lunedi   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchCase="'3'" [ngClass]="'one'">
-                <ion-badge color="Purple"><b>Martedì   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchCase="'4'" [ngClass]="'one'">
-                <ion-badge color="Brown"><b>Mercoledì   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchCase="'5'" [ngClass]="'one'">
-                <ion-badge color="Pink"><b>Giovedi   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchCase="'6'" [ngClass]="'one'">
-                <ion-badge color="Orange"><b>Venerdì   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchCase="'7'" [ngClass]="'one'">
-                <ion-badge color="Green"><b>Sabato   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-          	  <div *ngSwitchDefault>Nothing Found.</div>
-          </div>
-        </ion-card-header>
-        <ion-card-content>
-          <ion-grid>
-            <ion-row>
-
-              <ion-col col-10 >
-                <h1>{{meeting.meeting_name}}</h1>
-                <div *ngIf="meeting.location_text ">{{meeting.location_text}}<br></div>
-                <div *ngIf="meeting.location_street ">{{meeting.location_street}}<br></div>
-                <div *ngIf="meeting.location_city_subsection ">{{meeting.location_city_subsection}}<br></div>
-                <div *ngIf="meeting.location_neighbourhood ">{{meeting.location_neighbourhood}}<br></div>
-                <div *ngIf="meeting.location_municipality ">{{meeting.location_municipality}}<br></div>
-                <div *ngIf="meeting.location_sub_province ">{{meeting.location_sub_province}}<br></div>
-                <div *ngIf="meeting.location_province ">{{meeting.location_province}}<br></div>
-                <div *ngIf="meeting.location_code_1 ">{{meeting.location_code_1}}<br></div>
-                <div *ngIf="meeting.location_info ">{{meeting.location_info}}<br></div>
-                <div *ngIf="meeting.comments ">{{meeting.comments}}<br></div>
-                <div *ngIf="meeting.contact_phone_1 ">{{meeting.contact_phone_1}}<br></div>
-                <div *ngIf="meeting.contact_email_1 ">{{meeting.contact_email_1}}<br></div>
-                <div *ngIf="meeting.train_lines">Train: {{meeting.train_lines}}<br></div>
-                <div *ngIf="meeting.bus_lines">Bus: {{meeting.bus_lines}}<br></div>
-                <div *ngIf="meeting.formats"><i>{{meeting.formats}}</i><br></div>
-              </ion-col>
-
-              <ion-col>
-                <button ion-button  (click)="openMapsLink(meeting.latitude , meeting.longitude)"><ion-icon name="map"> </ion-icon>&nbsp;Map</button>
-              </ion-col>
-
-            </ion-row>
-          </ion-grid>
-         </ion-card-content>
-      </ion-card>
-    </ion-list>
-  </div>
-
-  <ion-item-divider color="dark"  text-wrap (click)="toggleEmiliaRomagna(i)" [ngClass]="{active: isEmiliaRomagnaShown(i)}"><h1><b>EmiliaRomagna</b></h1>
-    <ion-icon color="success" item-right [name]="isEmiliaRomagnaShown(i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
-  </ion-item-divider>
-  <div *ngIf="isEmiliaRomagnaShown(i)">
-    <ion-list *ngFor="let meeting of EmiliaRomagnaList"  >
-      <ion-card>
-        <ion-card-header>
-
-            <div ngSwitch="{{ meeting.weekday_tinyint }}">
-              <div *ngSwitchCase="'1'" [ngClass]="'one'">
-                <ion-badge color="Teal"><b>Domenica   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchCase="'2'" [ngClass]="'one'">
-                <ion-badge color="Lime"><b>Lunedi   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchCase="'3'" [ngClass]="'one'">
-                <ion-badge color="Purple"><b>Martedì   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchCase="'4'" [ngClass]="'one'">
-                <ion-badge color="Brown"><b>Mercoledì   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchCase="'5'" [ngClass]="'one'">
-                <ion-badge color="Pink"><b>Giovedi   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchCase="'6'" [ngClass]="'one'">
-                <ion-badge color="Orange"><b>Venerdì   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-              <div *ngSwitchCase="'7'" [ngClass]="'one'">
-                <ion-badge color="Green"><b>Sabato   {{ meeting.start_time | slice:0:5 }} </b></ion-badge>
-              </div>
-          	  <div *ngSwitchDefault>Nothing Found.</div>
-          </div>
-        </ion-card-header>
-        <ion-card-content>
-          <ion-grid>
-            <ion-row>
-
-              <ion-col col-10 >
-                <h1>{{meeting.meeting_name}}</h1>
-                <div *ngIf="meeting.location_text ">{{meeting.location_text}}<br></div>
-                <div *ngIf="meeting.location_street ">{{meeting.location_street}}<br></div>
-                <div *ngIf="meeting.location_city_subsection ">{{meeting.location_city_subsection}}<br></div>
-                <div *ngIf="meeting.location_neighbourhood ">{{meeting.location_neighbourhood}}<br></div>
-                <div *ngIf="meeting.location_municipality ">{{meeting.location_municipality}}<br></div>
-                <div *ngIf="meeting.location_sub_province ">{{meeting.location_sub_province}}<br></div>
-                <div *ngIf="meeting.location_province ">{{meeting.location_province}}<br></div>
-                <div *ngIf="meeting.location_code_1 ">{{meeting.location_code_1}}<br></div>
-                <div *ngIf="meeting.location_info ">{{meeting.location_info}}<br></div>
-                <div *ngIf="meeting.comments ">{{meeting.comments}}<br></div>
-                <div *ngIf="meeting.contact_phone_1 ">{{meeting.contact_phone_1}}<br></div>
-                <div *ngIf="meeting.contact_email_1 ">{{meeting.contact_email_1}}<br></div>
-                <div *ngIf="meeting.train_lines">Train: {{meeting.train_lines}}<br></div>
-                <div *ngIf="meeting.bus_lines">Bus: {{meeting.bus_lines}}<br></div>
-                <div *ngIf="meeting.formats"><i>{{meeting.formats}}</i><br></div>
-              </ion-col>
-
-              <ion-col>
-                <button ion-button  (click)="openMapsLink(meeting.latitude , meeting.longitude)"><ion-icon name="map"> </ion-icon>&nbsp;Map</button>
-              </ion-col>
-
-            </ion-row>
-          </ion-grid>
-         </ion-card-content>
-      </ion-card>
-    </ion-list>
-  </div>
-
-
+</div>
 
 </ion-content>

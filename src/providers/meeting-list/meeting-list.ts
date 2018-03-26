@@ -10,11 +10,16 @@ export class MeetingListProvider {
     console.log('Hello MeetingListProvider Provider');
   }
 
-  getApiUrl : string = "https://na-italia.info/main_server/client_interface/json/?switcher=GetSearchResults&sort_keys=longitude,latitude";
+  getApiUrlMap : string = "https://na-italia.info/main_server/client_interface/json/?switcher=GetSearchResults&sort_keys=longitude,latitude";
+  getApiUrlDay : string = "https://na-italia.info/main_server/client_interface/json/?switcher=GetSearchResults&sort_keys=weekday_tinyint";
 
   getMeetings() {
-    return this.http.get(this.getApiUrl);
+    return this.http.get(this.getApiUrlMap);
   }
 
+  getMeetingsSortedByDay() {
+    return this.http.get(this.getApiUrlDay);
+
+  }
 
 }
