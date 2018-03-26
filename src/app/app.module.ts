@@ -17,6 +17,7 @@ import { JustfortodayModule } from '../pages/justfortoday/justfortoday.module';
 import { MyApp } from './app.component';
 import { JftProvider } from '../providers/jft/jft';
 import { MeetingListProvider } from '../providers/meeting-list/meeting-list';
+import { ServiceGroupsProvider } from '../providers/service-groups/service-groups';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { MeetingListProvider } from '../providers/meeting-list/meeting-list';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     JftProvider,
     InAppBrowser,
-    MeetingListProvider
+    MeetingListProvider,
+    ServiceGroupsProvider
     ]
 })
 export class AppModule {}
