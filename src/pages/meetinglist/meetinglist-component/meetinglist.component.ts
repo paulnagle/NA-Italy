@@ -11,22 +11,8 @@ import { LoadingController } from 'ionic-angular';
 export class MeetinglistComponent {
 
   meetingList : any;
-  BresciaList : any;
-  CentroSudList : any;
-  NordList : any;
-  NordOvestList : any;
-  ToscanaList : any;
-  VenetoList : any;
-  EmiliaRomagnaList : any;
-
-  shownBrescia = null;
-  shownCentroSud = null;
-  shownNord = null;
-  shownNordOvest = null;
-  shownToscana = null;
-  shownVeneto = null;
-  shownEmiliaRomagna = null;
-
+  meetingsListGroupingOne : string;
+  shownGroup = null;
   loader = null;
 
   constructor(private MeetingListProvider : MeetingListProvider,
@@ -39,6 +25,9 @@ export class MeetinglistComponent {
         });
     this.loader.present();
 
+//    this.meetingsListGroupingOne = 'location_sub_province';
+//    this.meetingsListGroupingOne = 'weekday_tinyint';
+    this.meetingsListGroupingOne = 'service_body_bigint';
     this.getAllMeetings();
 
   }
@@ -55,40 +44,49 @@ export class MeetinglistComponent {
     };
   }
 
-  toggleBrescia(group) { if (this.isBresciaShown(group)) { this.shownBrescia = null; } else { this.shownBrescia = group;} };
-  isBresciaShown(group) { return this.shownBrescia === group; };
-
-  toggleCentroSud(group) { if (this.isCentroSudShown(group)) { this.shownCentroSud = null; } else { this.shownCentroSud = group;} };
-  isCentroSudShown(group) { return this.shownCentroSud === group; };
-
-  toggleNord(group) { if (this.isNordShown(group)) { this.shownNord = null; } else { this.shownNord = group;} };
-  isNordShown(group) { return this.shownNord === group; };
-
-  toggleNordOvest(group) { if (this.isNordOvestShown(group)) { this.shownNordOvest = null; } else { this.shownNordOvest = group;} };
-  isNordOvestShown(group) { return this.shownNordOvest === group; };
-
-  toggleToscana(group) { if (this.isToscanaShown(group)) { this.shownToscana = null; } else { this.shownToscana = group;} };
-  isToscanaShown(group) { return this.shownToscana === group; };
-
-  toggleVeneto(group) { if (this.isVenetoShown(group)) { this.shownVeneto = null; } else { this.shownVeneto = group;} };
-  isVenetoShown(group) { return this.shownVeneto === group; };
-
-  toggleEmiliaRomagna(group) { if (this.isEmiliaRomagnaShown(group)) { this.shownEmiliaRomagna = null; } else { this.shownEmiliaRomagna = group;} };
-  isEmiliaRomagnaShown(group) { return this.shownEmiliaRomagna === group; };
-
   getAllMeetings(){
-    this.MeetingListProvider.getMeetings().subscribe((data)=>{
-      this.meetingList       = data;
-      this.BresciaList       = this.meetingList.filter(meeting => meeting.service_body_bigint == "2");
-      this.CentroSudList     = this.meetingList.filter(meeting => meeting.service_body_bigint == "3");
-      this.NordList          = this.meetingList.filter(meeting => meeting.service_body_bigint == "4");
-      this.NordOvestList     = this.meetingList.filter(meeting => meeting.service_body_bigint == "5");
-      this.ToscanaList       = this.meetingList.filter(meeting => meeting.service_body_bigint == "6");
-      this.VenetoList        = this.meetingList.filter(meeting => meeting.service_body_bigint == "7");
-      this.EmiliaRomagnaList = this.meetingList.filter(meeting => meeting.service_body_bigint == "8");
+    this.MeetingListProvider.getMeetingsSortedByDay().subscribe((data)=>{
 
+      // Get all the meeting list as flat json
+      this.meetingList = data;
+      this.meetingList  = this.meetingList.filter(meeting => meeting.contact_phone_1 = meeting.contact_phone_1.toString().replace("#@-@#", " : "));
+      this.meetingList  = this.meetingList.filter(meeting => meeting.contact_email_1 = meeting.contact_email_1.toString().replace("#@-@#", " : "));
 
+      this.groupMeetings();
       this.loader.dismiss();
     });
   }
+
+  groupMeetings() {
+    // A function to convert a flat json list to an javascript array
+    var groupJSONList = function(inputArray, key) {
+      return inputArray.reduce(function(ouputArray, currentValue) {
+        (ouputArray[currentValue[key]] = ouputArray[currentValue[key]] || []).push(currentValue);
+        return ouputArray;
+      }, {});
+    };
+
+    // Convert the flat json to an array grouped by and indexed by the meetingsListGroupingOne field,
+    var groupedByGroupingOne = groupJSONList( this.meetingList, this.meetingsListGroupingOne);
+
+    // Make the array a proper javascript array, index by number
+    var groupedByGroupingOneAsArray = Object.keys(groupedByGroupingOne).map(function(key) {
+      return groupedByGroupingOne[key];
+    });
+
+    this.meetingList = groupedByGroupingOneAsArray;
+  }
+
+  toggleGroup(group) {
+      if (this.isGroupShown(group)) {
+          this.shownGroup = null;
+      } else {
+          this.shownGroup = group;
+      }
+  };
+
+  isGroupShown(group) {
+      return this.shownGroup === group;
+  };
+
 }
