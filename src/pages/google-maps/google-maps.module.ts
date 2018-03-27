@@ -4,7 +4,7 @@ import { SharedModule } from '../../app/shared/shared.module';
 import { GoogleMapsComponent } from './google-maps-component/google-maps.component';
 import { AgmCoreModule } from '@agm/core';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
-
+import { PipesModule } from '../../pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -13,6 +13,7 @@ import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
   imports: [
   	CommonModule,
   	SharedModule,
+    PipesModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAtwUjsIB14f0aHgdLk_JYnUrI0jvczMXw'
     }),
