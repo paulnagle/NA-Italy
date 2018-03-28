@@ -34,9 +34,17 @@ export class EventsComponent {
 
           elem.innerHTML = data;
 
+          var a = elem.getElementsByTagName("A");
+          for(var i=0;i<a.length;i++)
+              a[i].removeAttribute("href");
+
           var tmp = elem.getElementsByClassName("view-content");
 
           this.events= tmp[0].innerHTML;
+
+
+
+
           console.log(tmp[0].innerHTML);
 
         }
