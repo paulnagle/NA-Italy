@@ -13,9 +13,6 @@ export class JftProvider {
 
   getJFT() {
     var JFT = this.http.get(this.getJFTUrl, {responseType: 'text'});
-
-
-
     return JFT;
   }
 
