@@ -1,84 +1,163 @@
-div {
-    display: block;
+div.views-row {
+  padding-bottom: 25px;
 }
 
-div.views-row{
-
-padding-bottom: 20px;
-
+a {
+  background-color: transparent;
 }
 
-
-.img-responsive, .thumbnail > img, .thumbnail a > img, .carousel-inner > .item > img, .carousel-inner > .item > a > img {
-    display: block;
-    max-width: 100%;
-    height: auto;
+a:active,
+a:hover {
+  outline: 0;
 }
 
-/*! CSS Used from: Embedded */
-/*! @import https://na-italia.org/modules/system/system.base.css?p5aslp */
-/*! end @import */
-/*! CSS Used from: Embedded */
-/*! @import https://na-italia.org/sites/all/modules/contrib/calendar/css/calendar_multiday.css?p5aslp */
-/*! end @import */
-/*! @import https://na-italia.org/sites/all/modules/contrib/colorbox_node/colorbox_node.css?p5aslp */
-/*! end @import */
-/*! @import https://na-italia.org/sites/all/modules/contrib/date/date_api/date.css?p5aslp */
-/*! end @import */
-/*! @import https://na-italia.org/sites/all/modules/contrib/date/date_repeat_field/date_repeat_field.css?p5aslp */
-/*! end @import */
-/*! @import https://na-italia.org/sites/all/modules/contrib/fences/field.css?p5aslp */
-/*! end @import */
-/*! @import https://na-italia.org/sites/all/modules/contrib/fitvids/fitvids.css?p5aslp */
-/*! end @import */
-/*! @import https://na-italia.org/modules/node/node.css?p5aslp */
-/*! end @import */
-/*! @import https://na-italia.org/sites/all/modules/contrib/views/css/views.css?p5aslp */
-/*! end @import */
-/*! CSS Used from: Embedded */
-/*! @import https://na-italia.org/sites/all/modules/contrib/colorbox/styles/default/colorbox_style.css?p5aslp */
-/*! end @import */
-/*! @import https://na-italia.org/sites/all/modules/contrib/ctools/css/ctools.css?p5aslp */
-/*! end @import */
-/*! @import https://na-italia.org/sites/all/modules/contrib/panels/css/panels.css?p5aslp */
-/*! end @import */
-/*! CSS Used from: https://cdn.jsdelivr.net/bootswatch/3.3.5/cerulean/bootstrap.css */
-a{background-color:transparent;}
-a:active,a:hover{outline:0;}
-img{border:0;}
-@media print{
-*,*:before,*:after{background:transparent!important;color:#000!important;-webkit-box-shadow:none!important;box-shadow:none!important;text-shadow:none!important;}
-a,a:visited{text-decoration:underline;}
-a[href]:after{content:" (" attr(href) ")";}
-img{page-break-inside:avoid;}
-img{max-width:100%!important;}
-p,h2{orphans:3;widows:3;}
-h2{page-break-after:avoid;}
+img {
+  border: 0;
 }
-*{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
-*:before,*:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
-a{color:#2fa4e7;text-decoration:none;}
-a:hover,a:focus{color:#157ab5;text-decoration:underline;}
-a:focus{outline:thin dotted;outline:5px auto -webkit-focus-ring-color;outline-offset:-2px;}
-img{vertical-align:middle;}
-.img-responsive{display:block;max-width:100%;height:auto;}
-h2{font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;font-weight:500;line-height:1.1;color:#317eac;}
-h2{margin-top:20px;margin-bottom:10px;}
-h2{font-size:30px;}
-p{margin:0 0 10px;}
-.row{margin-left:-15px;margin-right:-15px;}
-.col-sm-2,.col-sm-10{position:relative;min-height:1px;padding-left:15px;padding-right:15px;}
-@media (min-width: 768px){
-.col-sm-2,.col-sm-10{float:left;}
-.col-sm-10{width:83.33333333%;}
-.col-sm-2{width:16.66666667%;}
+@media print {
+  *,
+  *:after,
+  *:before {
+    background: transparent!important;
+    color: #000!important;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+    text-shadow: none!important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  img {
+    page-break-inside: avoid;
+  }
+
+  img {
+    max-width: 100%!important;
+  }
+
+  h2,
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2 {
+    page-break-after: avoid;
+  }
 }
-.row:before,.row:after{content:" ";display:table;}
-.row:after{clear:both;}
-/*! CSS Used from: Embedded */
-/*! @import https://na-italia.org/sites/all/themes/bootstrap/css/3.3.5/overrides-cerulean.min.css?p5aslp */
-p:last-child{margin-bottom:0;}
-/*! end @import */
-/*! @import https://na-italia.org/sites/all/themes/naitalia/css/style.css?p5aslp */
-h2{font-weight:300;}
-.view-id-eventi img{margin-top:3rem;}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+a {
+  color: #2fa4e7;
+  text-decoration: none;
+}
+
+a:focus,
+a:hover {
+  color: #157ab5;
+  text-decoration: underline;
+}
+
+a:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+img {
+  vertical-align: middle;
+}
+
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h2 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  line-height: 1.1;
+  color: #317eac;
+}
+
+h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+p {
+  margin: 0 0 10px;
+}
+
+.row {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.col-sm-10,
+.col-sm-2 {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 768px) {
+  .col-sm-10,
+  .col-sm-2 {
+    float: left;
+  }
+
+  .col-sm-10 {
+    width: 83.33333333%;
+  }
+
+  .col-sm-2 {
+    width: 16.66666667%;
+  }
+}
+
+.row:after,
+.row:before {
+  content: " ";
+  display: table;
+}
+
+.row:after {
+  clear: both;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+h2 {
+  font-weight: 300;
+}
+
+.view-id-eventi img {
+  margin-top: 3rem;
+}
