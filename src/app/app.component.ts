@@ -12,7 +12,7 @@ import { SettingsComponent } from '../pages/settings/settings-component/settings
 import { GoogleMapsComponent } from '../pages/google-maps/google-maps-component/google-maps.component';
 import { MeetinglistComponent } from '../pages/meetinglist/meetinglist-component/meetinglist.component';
 import { JustfortodayComponent } from '../pages/justfortoday/justfortoday-component/justfortoday.component';
-
+import { EventsComponent } from '../pages/events/events-component/events.component';
 import { ContactComponent } from '../pages/contact/contact-component/contact.component';
 
 @Component({
@@ -53,6 +53,7 @@ export class MyApp {
 			{ title: 'MEETINGLIST', component: MeetinglistComponent, icon: 'logo-buffer' },
 			{ title: 'JUSTFORTODAY', component: JustfortodayComponent, icon: 'calendar' },
 	    { title: 'DATETIME', component: DatetimeComponent, icon: 'clock'},
+			{ title: 'EVENTS', component: EventsComponent, icon: 'calendar'},
 			{ title: 'CONTACT', component: ContactComponent, icon: 'contact'}
 		];
 	}
