@@ -4,3 +4,56 @@ div.views-field {
 padding-bottom: 10px;
 
 }
+
+/*! CSS Used from: Embedded */
+/*! @import https://na-italia.org/modules/system/system.base.css?p5aslp */
+/*! end @import */
+/*! CSS Used from: Embedded */
+/*! @import https://na-italia.org/sites/all/modules/contrib/calendar/css/calendar_multiday.css?p5aslp */
+/*! end @import */
+/*! @import https://na-italia.org/sites/all/modules/contrib/colorbox_node/colorbox_node.css?p5aslp */
+/*! end @import */
+/*! @import https://na-italia.org/sites/all/modules/contrib/date/date_api/date.css?p5aslp */
+/*! end @import */
+/*! @import https://na-italia.org/sites/all/modules/contrib/date/date_repeat_field/date_repeat_field.css?p5aslp */
+/*! end @import */
+/*! @import https://na-italia.org/sites/all/modules/contrib/fences/field.css?p5aslp */
+/*! end @import */
+/*! @import https://na-italia.org/sites/all/modules/contrib/fitvids/fitvids.css?p5aslp */
+/*! end @import */
+/*! @import https://na-italia.org/modules/node/node.css?p5aslp */
+/*! end @import */
+/*! @import https://na-italia.org/sites/all/modules/contrib/views/css/views.css?p5aslp */
+/*! end @import */
+/*! CSS Used from: Embedded */
+/*! @import https://na-italia.org/sites/all/modules/contrib/colorbox/styles/default/colorbox_style.css?p5aslp */
+/*! end @import */
+/*! @import https://na-italia.org/sites/all/modules/contrib/ctools/css/ctools.css?p5aslp */
+/*! end @import */
+/*! @import https://na-italia.org/sites/all/modules/contrib/panels/css/panels.css?p5aslp */
+/*! end @import */
+/*! CSS Used from: https://cdn.jsdelivr.net/bootswatch/3.3.5/cerulean/bootstrap.css */
+strong{font-weight:bold;}
+@media print{
+*,*:before,*:after{background:transparent!important;color:#000!important;-webkit-box-shadow:none!important;box-shadow:none!important;text-shadow:none!important;}
+p,h2{orphans:3;widows:3;}
+h2{page-break-after:avoid;}
+}
+*{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+*:before,*:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+h2{font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;font-weight:500;line-height:1.1;color:#317eac;}
+h2{margin-top:20px;margin-bottom:10px;}
+h2{font-size:30px;}
+p{margin:0 0 10px;}
+/*! CSS Used from: Embedded */
+/*! @import https://na-italia.org/sites/all/themes/bootstrap/css/3.3.5/overrides-cerulean.min.css?p5aslp */
+p:last-child{margin-bottom:0;}
+/*! end @import */
+/*! @import https://na-italia.org/sites/all/themes/naitalia/css/style.css?p5aslp */
+h2{font-weight:300;}
+span.date-display-single{text-transform:uppercase;font-size:.8em;}
+.spo-date{font-size:24px;font-weight:500;}
+.spo-body{border-bottom:thin solid #1995dc;border-top:thin solid #1995dc;margin:1em 0;padding:1em 0;}
+.citation::before{content:"(";}
+.citation::after{content:")";}
+.date-display-single{text-transform:lowercase;}
