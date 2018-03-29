@@ -16,7 +16,7 @@ export class EventsComponent {
 
   constructor(private EventsProvider : EventsProvider , public loadingCtrl: LoadingController) {
     this.loader = this.loadingCtrl.create({
-          content: "Loading Events...",
+          content: "Caricamento eventi...",
           duration: 10000
         });
     this.loader.present();
@@ -41,12 +41,6 @@ export class EventsComponent {
           var tmp = elem.getElementsByClassName("view-content");
 
           this.events= tmp[0].innerHTML;
-
-
-
-
-          console.log(tmp[0].innerHTML);
-
         }
     );
 
