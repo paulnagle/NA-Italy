@@ -27,19 +27,14 @@ export class MeetinglistComponent {
           duration: 10000
         });
     this.loader.present();
-
-//    this.meetingsListGroupingOne = 'location_sub_province';
-//    this.meetingsListGroupingOne = 'weekday_tinyint';
+//  this.meetingsListGroupingOne = 'location_sub_province';
+//  this.meetingsListGroupingOne = 'weekday_tinyint';
     this.meetingsListGroupingOne = 'service_body_bigint';
-
     this.getServiceGroupNames();
-
-
   }
 
   public openMapsLink(destLatitude, destLongitude) {
     // ios
-    console.log("In openMapsLink");
     if (this.plt.is('ios')) {
       window.open('https://www.google.com/maps/search/?api=1&query=' + destLatitude + ',' + destLongitude + ')', '_system');
     };
@@ -49,33 +44,22 @@ export class MeetinglistComponent {
     };
   }
 
-
   getServiceGroupNames() {
     this.ServiceGroupsProvider.getAllServiceGroups().subscribe((serviceGroupData)=>{
       this.serviceGroupNames = serviceGroupData;
-      console.log(this.serviceGroupNames);
       this.getAllMeetings();
     });
   }
 
   getServiceNameFromID(id) {
     var obj = this.serviceGroupNames.find(function (obj) { return obj.id === id; });
-    console.log("ID: " + id + "  NAME: " + obj.name);
     return obj.name;
   }
 
   getAllMeetings(){
     this.MeetingListProvider.getMeetingsSortedByDay().subscribe((data)=>{
-
-      // Get all the meeting list as flat json
       this.meetingList = data;
-
       this.meetingList = this.meetingList.filter(meeting => meeting.service_body_bigint = this.getServiceNameFromID(meeting.service_body_bigint));
-
-//      this.meetingList = this.meetingList.filter(meeting => meeting.contact_phone_1 = meeting.contact_phone_1.toString().replace("#@-@#", " : "));
-//      this.meetingList = this.meetingList.filter(meeting => meeting.contact_email_1 = meeting.contact_email_1.toString().replace("#@-@#", " : "));
-
-
       this.groupMeetings();
       this.loader.dismiss();
     });
