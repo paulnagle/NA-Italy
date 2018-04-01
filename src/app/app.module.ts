@@ -1,9 +1,8 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import 'rxjs/add/operator/map';
-
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-
+import { Geolocation } from '@ionic-native/geolocation';
 import { SharedModule } from './shared/shared.module'
 import { HomeModule } from '../pages/home/home.module';
 import { TabsModule } from '../pages/tabs/tabs.module';
@@ -14,7 +13,7 @@ import { DatetimeModule } from '../pages/datetime/datetime.module';
 import { MeetinglistModule }  from '../pages/meetinglist/meetinglist.module';
 import { JustfortodayModule } from '../pages/justfortoday/justfortoday.module';
 import { EventsPageModule } from '../pages/events/events.module'
-
+import { ToastController } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { JftProvider } from '../providers/jft/jft';
 import { EventsProvider} from '../providers/events/events'
@@ -47,6 +46,8 @@ import { ServiceGroupsProvider } from '../providers/service-groups/service-group
     JftProvider,
     EventsProvider,
     InAppBrowser,
+    Geolocation,
+    ToastController,
     MeetingListProvider,
     ServiceGroupsProvider
     ]
