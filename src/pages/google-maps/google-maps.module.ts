@@ -4,6 +4,7 @@ import { SharedModule } from '../../app/shared/shared.module';
 import { GoogleMapsComponent } from './google-maps-component/google-maps.component';
 import { AgmCoreModule } from '@agm/core';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
+import { Geolocation } from '@ionic-native/geolocation';
 import { PipesModule } from '../../pipes/pipes.module';
 
 @NgModule({
