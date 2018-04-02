@@ -12,10 +12,14 @@ import { LoadingController } from 'ionic-angular';
 export class MeetinglistComponent {
 
   meetingList : any;
-  meetingsListGroupingOne : string;
+  meetingListArea : any;
+  meetingListCity : any;
+  meetingsListAreaGrouping : string;
+  meetingsListCityGrouping : string;
   shownGroup = null;
   loader = null;
   serviceGroupNames : any;
+  HTMLGrouping :any;
 
   constructor(private MeetingListProvider : MeetingListProvider,
               private ServiceGroupsProvider : ServiceGroupsProvider,
@@ -26,13 +30,14 @@ export class MeetinglistComponent {
           content: "Caricamento delle riunioni...",
           duration: 10000
         });
+    this.HTMLGrouping = "area";
     this.loader.present();
-//  this.meetingsListGroupingOne = 'location_sub_province';
-//  this.meetingsListGroupingOne = 'weekday_tinyint';
-    this.meetingsListGroupingOne = 'service_body_bigint';
+    this.meetingsListAreaGrouping = 'service_body_bigint';
+    this.meetingsListCityGrouping = 'location_sub_province';
     this.getServiceGroupNames();
   }
 
+// TODO:
   public openMapsLink(destLatitude, destLongitude) {
     // ios
     if (this.plt.is('ios')) {
@@ -60,12 +65,16 @@ export class MeetinglistComponent {
     this.MeetingListProvider.getMeetingsSortedByDay().subscribe((data)=>{
       this.meetingList = data;
       this.meetingList = this.meetingList.filter(meeting => meeting.service_body_bigint = this.getServiceNameFromID(meeting.service_body_bigint));
-      this.groupMeetings();
+      this.meetingListCity = this.meetingList.concat();
+      this.meetingListArea = this.meetingList.concat();
+      this.meetingListArea = this.groupMeetingList(this.meetingListArea, this.meetingsListAreaGrouping);
+      this.meetingListCity = this.groupMeetingList(this.meetingListCity, this.meetingsListCityGrouping);
+
       this.loader.dismiss();
     });
   }
 
-  groupMeetings() {
+  groupMeetingList(meetingList, groupingOption) {
     // A function to convert a flat json list to an javascript array
     var groupJSONList = function(inputArray, key) {
       return inputArray.reduce(function(ouputArray, currentValue) {
@@ -73,16 +82,16 @@ export class MeetinglistComponent {
         return ouputArray;
       }, {});
     };
-
     // Convert the flat json to an array grouped by and indexed by the meetingsListGroupingOne field,
-    var groupedByGroupingOne = groupJSONList( this.meetingList, this.meetingsListGroupingOne);
+    var groupedByGroupingOne = groupJSONList( meetingList, groupingOption);
 
     // Make the array a proper javascript array, index by number
     var groupedByGroupingOneAsArray = Object.keys(groupedByGroupingOne).map(function(key) {
       return groupedByGroupingOne[key];
     });
 
-    this.meetingList = groupedByGroupingOneAsArray;
+    meetingList = groupedByGroupingOneAsArray;
+    return meetingList;
   }
 
   toggleGroup(group) {

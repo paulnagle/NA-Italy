@@ -31,7 +31,6 @@ export class GoogleMapsComponent {
               private toastCtrl: ToastController ) {}
 
   mapReady(event: any) {
-    console.log("mapReady", event);
     this.map = event;
     this.radius = 50;
     this.radiusMeters = this.radius * 1000;
@@ -137,14 +136,6 @@ export class GoogleMapsComponent {
     }
   }
 
-  presentToast(toastMessage) {
-    let toast = this.toastCtrl.create({
-      message: toastMessage,
-      duration: 3000,
-      position: 'middle'
-    });
-  }
-
   locatePhone() {
     this.presentLoader("Trovare il telefono");
     this.geolocation.getCurrentPosition({timeout: 5000}).then((resp) => {
@@ -153,13 +144,11 @@ export class GoogleMapsComponent {
       this.radius = 10;
       this.radiusMeters = this.radius * 1000
       this.dismissLoader();
-      this.presentToast("Trovato");
     }).catch((error) => {
       console.log('Error getting location', error);
       this.radius = 10;
       this.radiusMeters = this.radius * 1000
       this.dismissLoader();
-      this.presentToast("Non Trovato");
     });
   }
 }
