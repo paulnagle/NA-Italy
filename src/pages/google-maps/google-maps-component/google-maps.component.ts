@@ -31,7 +31,6 @@ export class GoogleMapsComponent {
               private toastCtrl: ToastController ) {}
 
   mapReady(event: any) {
-    console.log("mapReady", event);
     this.map = event;
     this.radius = 50;
     this.radiusMeters = this.radius * 1000;
