@@ -5,8 +5,9 @@ import { Injectable } from '@angular/core';
 export class MeetingListProvider {
 
   meetings : any;
-  whichBMLT : any = "https://na-italia.info/main_server/client_interface/json/";
+//  whichBMLT : any = "https://na-italia.info/main_server/client_interface/json/";
 //  whichBMLT : any = "https://na-bmlt.org/_/sandwich/client_interface/json";
+  whichBMLT : any = "https://tomato.na-bmlt.org/main_server/client_interface/json/";
 
   constructor(public http: HttpClient) {
     console.log('Hello MeetingListProvider Provider');
@@ -20,7 +21,7 @@ export class MeetingListProvider {
   }
 
   getCircleMeetings(lat, long, radius) {
-    var getApiUrlCircleMap : string = this.whichBMLT + "?switcher=GetSearchResults&geo_width_km=" + radius + "&long_val=" + long + "&lat_val=" + lat + "&sort_keys=longitude,latitude";
+    var getApiUrlCircleMap : string = this.whichBMLT + "?switcher=GetSearchResults&geo_width_km=" + radius + "&long_val=" + long + "&lat_val=" + lat + "&sort_keys=longitude,latitude&callingApp=na-italia.org";
 
     return this.http.get(getApiUrlCircleMap);
   }
