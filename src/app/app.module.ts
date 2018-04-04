@@ -7,6 +7,7 @@ import { SharedModule } from './shared/shared.module'
 import { HomeModule } from '../pages/home/home.module';
 import { TabsModule } from '../pages/tabs/tabs.module';
 import { GoogleMapsModule } from '../pages/google-maps/google-maps.module';
+import { FullItalyMapModule } from '../pages/fullitalymap/fullitalymap.module';
 import { SettingsModule } from '../pages/settings/settings.module';
 import { ContactModule } from '../pages/contact/contact.module';
 import { DatetimeModule } from '../pages/datetime/datetime.module';
@@ -30,6 +31,7 @@ import { ServiceGroupsProvider } from '../providers/service-groups/service-group
     HomeModule,
     TabsModule,
     GoogleMapsModule,
+    FullItalyMapModule,
     SettingsModule,
     ContactModule,
     DatetimeModule,

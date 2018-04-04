@@ -10,6 +10,7 @@ import { TabsComponent } from '../pages/tabs/tabs-component/tabs.component';
 import { DatetimeComponent } from '../pages/datetime/datetime-component/datetime.component';
 import { SettingsComponent } from '../pages/settings/settings-component/settings.component';
 import { GoogleMapsComponent } from '../pages/google-maps/google-maps-component/google-maps.component';
+import { FullItalyMapComponent } from '../pages/fullitalymap/fullitalymap-component/fullitalymap.component';
 import { MeetinglistComponent } from '../pages/meetinglist/meetinglist-component/meetinglist.component';
 import { JustfortodayComponent } from '../pages/justfortoday/justfortoday-component/justfortoday.component';
 import { EventsComponent } from '../pages/events/events-component/events.component';
@@ -50,6 +51,7 @@ export class MyApp {
 		  { title: 'HOME', component: TabsComponent, icon: 'home' },
 	    { title: 'SETTINGS', component: SettingsComponent, icon: 'settings'},
 			{ title: 'GOOGLE_MAPS', component: GoogleMapsComponent, icon: 'map'},
+			{ title: 'FULLITALYMAP', component: FullItalyMapComponent, icon: 'map'},
 			{ title: 'MEETINGLIST', component: MeetinglistComponent, icon: 'logo-buffer' },
 			{ title: 'JUSTFORTODAY', component: JustfortodayComponent, icon: 'calendar' },
 	    { title: 'DATETIME', component: DatetimeComponent, icon: 'clock'},
