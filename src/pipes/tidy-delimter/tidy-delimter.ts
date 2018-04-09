@@ -1,12 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-/**
- * Generated class for the TidyDelimterPipe pipe.
- *
- * See https://angular.io/api/core/Pipe for more info on Angular Pipes.
- */
+
 @Pipe({
-  name: 'tidyDelimter',
+  name: 'tidyDelimter'
 })
 export class TidyDelimterPipe implements PipeTransform {
   /**

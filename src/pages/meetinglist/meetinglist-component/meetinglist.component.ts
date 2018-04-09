@@ -67,6 +67,8 @@ export class MeetinglistComponent {
       this.meetingList = this.meetingList.filter(meeting => meeting.service_body_bigint = this.getServiceNameFromID(meeting.service_body_bigint));
       this.meetingListCity = this.meetingList.concat();
       this.meetingListArea = this.meetingList.concat();
+      this.meetingListCity.sort((a, b) => a.location_sub_province.localeCompare(b.location_sub_province));
+      this.meetingListArea.sort((a, b) => a.service_body_bigint.localeCompare(b.service_body_bigint));
       this.meetingListArea = this.groupMeetingList(this.meetingListArea, this.meetingsListAreaGrouping);
       this.meetingListCity = this.groupMeetingList(this.meetingListCity, this.meetingsListCityGrouping);
 
@@ -82,6 +84,8 @@ export class MeetinglistComponent {
         return ouputArray;
       }, {});
     };
+
+
     // Convert the flat json to an array grouped by and indexed by the meetingsListGroupingOne field,
     var groupedByGroupingOne = groupJSONList( meetingList, groupingOption);
 
