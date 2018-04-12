@@ -21,7 +21,7 @@
           <div *ngIf="detail.url">
             <ion-item text-wrap>
               <ion-icon name="globe" item-left></ion-icon>
-              <a href="{{detail.url}}">{{detail.url}} </a>
+              <button ion-button small (click)='openLink(detail.url)'>{{detail.url}}</button>
             </ion-item>
           </div>
 

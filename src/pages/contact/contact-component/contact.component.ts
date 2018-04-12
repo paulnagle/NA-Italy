@@ -29,6 +29,8 @@ export class ContactComponent {
 
     });
   }
-
-
+  
+  public openLink(url) {
+      window.open(url , '_system');
+    };
 }
