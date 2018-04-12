@@ -21,3 +21,6 @@ ionic cordova platform add ios
 ionic cordova platform add android
 
 ionic cordova prepare
+
+ionic cordova resources ios --force
+ionic cordova resources android --force
