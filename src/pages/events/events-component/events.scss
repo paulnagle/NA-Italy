@@ -3,21 +3,10 @@ div.views-row {
   padding-bottom: 40px;
 }
 
-a {
-  background-color: transparent;
-}
-
-a:active,
-a:hover {
-  outline: 0;
-
-}
-
 img {
   border: 0;
-
+  vertical-align: middle;
 }
-
 
 * {
   -webkit-box-sizing: border-box;
@@ -32,53 +21,29 @@ img {
   box-sizing: border-box;
 }
 
-a {
-  color: #2fa4e7;
-  text-decoration: none;
-
-}
-
+a,
 a:focus,
 a:hover {
-  color: #157ab5;
-  text-decoration: underline;
-
+  color: #000;
+  text-decoration: none;
+  font-size: 35px;
 }
-
-a:focus {
-  outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
-
-}
-
-
-img {
-  vertical-align: middle;
-
-}
+.enable-hover a:hover{opacity:1;}
 
 .img-responsive {
   display: block;
   max-width: 100%;
   height: auto;
-
 }
 
 h2 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   line-height: 1.1;
-  color: #317eac;
-}
-
-h2 {
+  color: #000;
   margin-top: 20px;
-  margin-bottom: 10px;
-}
-
-h2 {
-  font-size: 30px;
+  margin-bottom: 20px;
+  font-size: 35px;
 }
 
 p {
@@ -111,10 +76,6 @@ p {
 
 p:last-child {
   margin-bottom: 0;
-}
-
-h2 {
-  font-weight: 300;
 }
 
 .view-id-eventi img {
