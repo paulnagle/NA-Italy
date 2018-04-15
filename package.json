@@ -50,9 +50,11 @@
     "js-marker-clusterer": "^1.0.0",
     "moment": "2.19.3",
     "noodlejs": "^0.3.2",
+    "npm": "^5.8.0",
     "promise-polyfill": "6.0.2",
     "rxjs": "5.5.2",
     "sw-toolbox": "3.6.0",
+    "thenby": "^1.2.3",
     "zone.js": "0.8.18"
   },
   "devDependencies": {
