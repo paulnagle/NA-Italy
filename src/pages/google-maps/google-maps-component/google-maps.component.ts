@@ -40,7 +40,6 @@ export class GoogleMapsComponent {
   }
 
   mapReady(event: any) {
-    console.log("Entering mapReady: ")
     this.map = event;
     this.radius = 50;
     this.radiusMeters = this.radius * 1000;
@@ -49,7 +48,6 @@ export class GoogleMapsComponent {
   }
 
   getCircleMeetings(event){
-    console.log("Entering getCircleMeetings: ")
 
     if (typeof event === "undefined") {  // spurious event, don't run a search
       return;
@@ -67,7 +65,6 @@ export class GoogleMapsComponent {
         this.meetingList  = data;
         this.meetingList  = this.meetingList.filter(meeting => meeting.latitude = parseFloat(meeting.latitude));
         this.meetingList  = this.meetingList.filter(meeting => meeting.longitude = parseFloat(meeting.longitude));
-        console.log(this.meetingList);
       }
         var i : any;
         for (i = 0; i < this.meetingList.length - 1; i++) {
@@ -97,8 +94,6 @@ export class GoogleMapsComponent {
   }
 
   circleDragEnd($event: MouseEvent) {
-    console.log("Entering circleDragEnd: ")
-
     this.latitude = $event.coords.lat;
     this.longitude = $event.coords.lng;
     this.latitude = parseFloat(this.latitude);
@@ -113,8 +108,6 @@ export class GoogleMapsComponent {
   }
 
   circleRadiusChange(event: any) {
-    console.log("Entering circleRadiusChange: ")
-
     this.circle.getBounds().then((bounds) => {
       this.mapBounds =  bounds;
     })
@@ -126,8 +119,6 @@ export class GoogleMapsComponent {
   }
 
   public openMapsLink(destLatitude, destLongitude) {
-    console.log("Entering openMapsLink: ")
-
     // ios
     if (this.plt.is('ios')) {
       window.open('https://www.google.com/maps/search/?api=1&query=' + destLatitude + ',' + destLongitude + ')', '_system');
@@ -155,7 +146,6 @@ export class GoogleMapsComponent {
   }
 
   locatePhone() {
-    console.log("Entering locatePhone: ")
     this.translate.get('LOCATING').subscribe(
       value => {
         // value is our translated string

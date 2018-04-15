@@ -91,6 +91,7 @@ export class MeetinglistComponent {
           .thenBy("start_time")
         );
       }
+      
       this.dismissLoader();
     });
   }
