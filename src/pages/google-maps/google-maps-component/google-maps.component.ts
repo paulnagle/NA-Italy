@@ -1,11 +1,15 @@
-import { Component, ViewChild } from '@angular/core';
-import { LoadingController } from 'ionic-angular';
-import { Platform } from 'ionic-angular';
-import { ToastController } from 'ionic-angular';
-import { Geolocation } from '@ionic-native/geolocation';
-import { MouseEvent, LatLngLiteral, LatLngBounds, AgmCircle , AgmMap } from '@agm/core';
-import { MeetingListProvider } from '../../../providers/meeting-list/meeting-list';
-import { TranslateService } from '@ngx-translate/core';
+import { Component, ViewChild }   from '@angular/core';
+import { LoadingController }      from 'ionic-angular';
+import { Platform }               from 'ionic-angular';
+import { ToastController }        from 'ionic-angular';
+import { Geolocation }            from '@ionic-native/geolocation';
+import { MouseEvent,
+         LatLngLiteral,
+         LatLngBounds,
+         AgmCircle ,
+         AgmMap }                 from '@agm/core';
+import { MeetingListProvider }    from '../../../providers/meeting-list/meeting-list';
+import { TranslateService }       from '@ngx-translate/core';
 
 declare const google: any;
 
