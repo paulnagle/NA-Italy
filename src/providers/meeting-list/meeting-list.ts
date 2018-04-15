@@ -9,7 +9,6 @@ export class MeetingListProvider {
   tomatoBMLT : any = "https://tomato.na-bmlt.org/main_server/client_interface/json/";
 
   constructor(public http: HttpClient) {
-    console.log('Hello MeetingListProvider Provider');
   }
 
   getApiUrl : string = this.italiaBMLT + "?switcher=GetSearchResults";
