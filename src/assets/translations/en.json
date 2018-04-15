@@ -53,7 +53,9 @@
     "WEEKS"         : "weeks",
     "YEARS"         : "years",
     "EVENTSDETAILS" : "For full details of NA events in Italy, visit ",
-    "LOADINGMEETINGS" : "Loading meetings"
+    "LOADINGMEETINGS" : "Loading meetings",
+    "EVENTSLOADER"  : "Loading events..."
+
 
 
 }

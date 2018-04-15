@@ -53,7 +53,8 @@
     "WEEKS"         : "settimane",
     "YEARS"         : "anni",
     "EVENTSDETAILS" : "Per tutti i dettagli sugli eventi di NA Italy, visita ",
-    "LOADINGMEETINGS" : "Caricamento delle riunioni"
+    "LOADINGMEETINGS" : "Caricamento delle riunioni",
+    "EVENTSLOADER"  : "Caricamento eventi..."
 
 
 
