@@ -1,9 +1,10 @@
-import { Component, ViewChild } from '@angular/core';
-import { LoadingController } from 'ionic-angular';
-import { Platform } from 'ionic-angular';
-import { ToastController } from 'ionic-angular';
-import { AgmMap } from '@agm/core';
-import { MeetingListProvider } from '../../../providers/meeting-list/meeting-list';
+import { Component, ViewChild }     from '@angular/core';
+import { LoadingController }        from 'ionic-angular';
+import { Platform }                 from 'ionic-angular';
+import { ToastController }          from 'ionic-angular';
+import { AgmMap }                   from '@agm/core';
+import { MeetingListProvider }      from '../../../providers/meeting-list/meeting-list';
+import { TranslateService }         from '@ngx-translate/core';
 
 declare const google: any;
 
@@ -20,17 +21,19 @@ export class FullItalyMapComponent {
 
   constructor(private MeetingListProvider : MeetingListProvider,
               public  loadingCtrl         : LoadingController,
-              public  plt                 : Platform ) {
+              public  plt                 : Platform,
+              private translate           : TranslateService ) {
 
     this.getMeetings();
   }
 
-  dayOfWeekAsString(dayIndex) {
-  	return ["not a day?", "Do", "Lun","Mar","Mer","Gio","Ven","Sab"][dayIndex];
-  }
-
   getMeetings(){
-    this.presentLoader("Caricamento mappa...");
+    this.translate.get('LOADINGMAP').subscribe(
+      value => {
+        // value is our translated string
+        this.presentLoader(value);
+      }
+    )
     this.MeetingListProvider.getMeetings().subscribe((data)=>{
       if (JSON.stringify(data) == "{}") {  // empty result set!
         this.meetingList = JSON.parse("[]");
@@ -38,8 +41,6 @@ export class FullItalyMapComponent {
         this.meetingList  = data;
         this.meetingList  = this.meetingList.filter(meeting => meeting.latitude = parseFloat(meeting.latitude));
         this.meetingList  = this.meetingList.filter(meeting => meeting.longitude = parseFloat(meeting.longitude));
-        this.meetingList  = this.meetingList.filter(meeting => meeting.start_time = (meeting.start_time).substring(0,5));
-        this.meetingList  = this.meetingList.filter(meeting => meeting.weekday_tinyint = this.dayOfWeekAsString(meeting.weekday_tinyint));
       }
         var i : any;
         for (i = 0; i < this.meetingList.length - 1; i++) {

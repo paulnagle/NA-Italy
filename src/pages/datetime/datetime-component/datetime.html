@@ -12,23 +12,23 @@
 <ion-content class="outer-content">
 
   <ion-item>
-    <ion-label>Inserisci la tua data di pulizia-> </ion-label>
+    <ion-label>{{ 'ENTERCLEANDATE' | translate }}&nbsp;-> </ion-label>
     <ion-datetime displayFormat="DD MMM YYYY" [(ngModel)]="myDate"></ion-datetime>
   </ion-item>
 
   <ion-card>
-    <ion-card-header>Tempo di Pulizia in giorni</ion-card-header>
-    <ion-card-content><h1>{{ getCleanTime() }} giorni</h1></ion-card-content>
+    <ion-card-header>{{ 'CLEANDAYS' | translate }}</ion-card-header>
+    <ion-card-content><h1>{{ getCleanTime() }} {{ 'DAYS' | translate }}</h1></ion-card-content>
   </ion-card>
 
   <ion-card>
-    <ion-card-header>Tempo di Pulizia in settimane</ion-card-header>
-    <ion-card-content><h1>{{ getCleanTimeWeeks() }} settimane</h1></ion-card-content>
+    <ion-card-header>{{ 'CLEANWEEKS' | translate }}</ion-card-header>
+    <ion-card-content><h1>{{ getCleanTimeWeeks() }} {{ 'WEEKS' | translate }}</h1></ion-card-content>
   </ion-card>
 
   <ion-card>
-    <ion-card-header>Tempo di Pulizia in anni</ion-card-header>
-    <ion-card-content><h1>{{ getCleanTimeYears() }} anni</h1></ion-card-content>
+    <ion-card-header>{{ 'CLEANYEARS' | translate }}</ion-card-header>
+    <ion-card-content><h1>{{ getCleanTimeYears() }} {{ 'YEARS' | translate }}</h1></ion-card-content>
   </ion-card>
 
 </ion-content>

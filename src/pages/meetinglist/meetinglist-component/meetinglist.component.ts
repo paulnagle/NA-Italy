@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
-import { MeetingListProvider } from '../../../providers/meeting-list/meeting-list';
-import { ServiceGroupsProvider } from '../../../providers/service-groups/service-groups';
-
-import { LoadingController } from 'ionic-angular';
+import { Component }              from '@angular/core';
+import { Platform }               from 'ionic-angular';
+import { MeetingListProvider }    from '../../../providers/meeting-list/meeting-list';
+import { ServiceGroupsProvider }  from '../../../providers/service-groups/service-groups';
+import { TranslateService }       from '@ngx-translate/core';
+import { LoadingController }      from 'ionic-angular';
 
 @Component({
   selector: 'page-meetinglist',
@@ -11,25 +11,29 @@ import { LoadingController } from 'ionic-angular';
 })
 export class MeetinglistComponent {
 
-  meetingList : any;
-  meetingListArea : any;
-  meetingListCity : any;
-  meetingsListAreaGrouping : string;
-  meetingsListCityGrouping : string;
-  shownGroup = null;
-  loader = null;
-  serviceGroupNames : any;
-  HTMLGrouping :any;
+  meetingList               : any;
+  meetingListArea           : any;
+  meetingListCity           : any;
+  meetingsListAreaGrouping  : string;
+  meetingsListCityGrouping  : string;
+  shownGroup                            = null;
+  loader                                = null;
+  serviceGroupNames         : any;
+  HTMLGrouping              : any;
 
-  constructor(private MeetingListProvider : MeetingListProvider,
-              private ServiceGroupsProvider : ServiceGroupsProvider,
-              public loadingCtrl: LoadingController,
-              public plt: Platform) {
+  constructor ( private MeetingListProvider   : MeetingListProvider,
+                private ServiceGroupsProvider : ServiceGroupsProvider,
+                public loadingCtrl            : LoadingController,
+                public plt                    : Platform,
+                private translate             : TranslateService ) {
+    // MeetiningListComponent constructor
+    this.translate.get('LOADINGMEETINGS').subscribe(
+      value => {
+        // value is our translated string
+        this.presentLoader(value);
+      }
+    )
 
-    this.loader = this.loadingCtrl.create({
-          content: "Caricamento delle riunioni...",
-          duration: 10000
-        });
     this.HTMLGrouping = "area";
     this.loader.present();
     this.meetingsListAreaGrouping = 'service_body_bigint';
@@ -72,7 +76,7 @@ export class MeetinglistComponent {
       this.meetingListArea = this.groupMeetingList(this.meetingListArea, this.meetingsListAreaGrouping);
       this.meetingListCity = this.groupMeetingList(this.meetingListCity, this.meetingsListCityGrouping);
 
-      this.loader.dismiss();
+      this.dismissLoader();
     });
   }
 
@@ -81,6 +85,7 @@ export class MeetinglistComponent {
     var groupJSONList = function(inputArray, key) {
       return inputArray.reduce(function(ouputArray, currentValue) {
         (ouputArray[currentValue[key]] = ouputArray[currentValue[key]] || []).push(currentValue);
+        // ? Sort this list agaain before pushing it back?
         return ouputArray;
       }, {});
     };
@@ -109,5 +114,21 @@ export class MeetinglistComponent {
   isGroupShown(group) {
       return this.shownGroup === group;
   };
+
+  presentLoader(loaderText) {
+    if (!this.loader) {
+      this.loader = this.loadingCtrl.create({
+        content: loaderText
+      });
+      this.loader.present();
+    }
+  }
+
+  dismissLoader() {
+    if(this.loader){
+      this.loader.dismiss();
+      this.loader = null;
+    }
+  }
 
 }
