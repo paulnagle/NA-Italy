@@ -4,6 +4,8 @@ import { MeetingListProvider }    from '../../../providers/meeting-list/meeting-
 import { ServiceGroupsProvider }  from '../../../providers/service-groups/service-groups';
 import { TranslateService }       from '@ngx-translate/core';
 import { LoadingController }      from 'ionic-angular';
+import firstBy                    from 'thenby';
+import thenBy                     from 'thenby';
 
 @Component({
   selector: 'page-meetinglist',
@@ -66,16 +68,30 @@ export class MeetinglistComponent {
   }
 
   getAllMeetings(){
-    this.MeetingListProvider.getMeetingsSortedByDay().subscribe((data)=>{
+    this.MeetingListProvider.getAllItalianMeetings().subscribe((data)=>{
       this.meetingList = data;
       this.meetingList = this.meetingList.filter(meeting => meeting.service_body_bigint = this.getServiceNameFromID(meeting.service_body_bigint));
-      this.meetingListCity = this.meetingList.concat();
+
       this.meetingListArea = this.meetingList.concat();
-      this.meetingListCity.sort((a, b) => a.location_sub_province.localeCompare(b.location_sub_province));
       this.meetingListArea.sort((a, b) => a.service_body_bigint.localeCompare(b.service_body_bigint));
       this.meetingListArea = this.groupMeetingList(this.meetingListArea, this.meetingsListAreaGrouping);
-      this.meetingListCity = this.groupMeetingList(this.meetingListCity, this.meetingsListCityGrouping);
+      for (var i = 0; i < this.meetingListArea.length; i++) {
+        this.meetingListArea[i].sort(
+          firstBy("weekday_tinyint")
+          .thenBy("start_time")
+        );
+      }
 
+      this.meetingListCity = this.meetingList.concat();
+      this.meetingListCity.sort((a, b) => a.location_sub_province.localeCompare(b.location_sub_province));
+      this.meetingListCity = this.groupMeetingList(this.meetingListCity, this.meetingsListCityGrouping);
+      for (var i = 0; i < this.meetingListCity.length; i++) {
+        this.meetingListCity[i].sort(
+          firstBy("weekday_tinyint")
+          .thenBy("start_time")
+        );
+      }
+      
       this.dismissLoader();
     });
   }
@@ -85,7 +101,6 @@ export class MeetinglistComponent {
     var groupJSONList = function(inputArray, key) {
       return inputArray.reduce(function(ouputArray, currentValue) {
         (ouputArray[currentValue[key]] = ouputArray[currentValue[key]] || []).push(currentValue);
-        // ? Sort this list agaain before pushing it back?
         return ouputArray;
       }, {});
     };

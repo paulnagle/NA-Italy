@@ -34,7 +34,7 @@ export class FullItalyMapComponent {
         this.presentLoader(value);
       }
     )
-    this.MeetingListProvider.getMeetings().subscribe((data)=>{
+    this.MeetingListProvider.getAllItalianMeetings().subscribe((data)=>{
       if (JSON.stringify(data) == "{}") {  // empty result set!
         this.meetingList = JSON.parse("[]");
       } else {

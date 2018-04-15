@@ -6,7 +6,6 @@ import { Injectable } from '@angular/core';
 export class EventsProvider {
 
   constructor(public http: HttpClient) {
-    console.log('Hello EventsProvider Provider');
   }
 
   getEventsUrl : string = "https://na-italia.org/eventi/italia";
