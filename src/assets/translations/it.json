@@ -42,6 +42,14 @@
     "NA"            : "Narcotics Anonymous (it)",
     "MAP"           : "Mappa",
     "LOADINGMAP"    : "Caricamento mappa...",
-    "LOCATING"      : "Locating phone.. (it)"
+    "LOCATING"      : "Locating phone.. (it)",
+    "ENTERCLEANDATE": "Inserisci la tua data di pulizia",
+    "CLEANDAYS"     : "Tempo di Pulizia in giorni",
+    "CLEANWEEKS"    : "Tempo di Pulizia in settimane",
+    "CLEANYEARS"    : "Tempo di Pulizia in anni",
+    "DAYS"          : "giorni",
+    "WEEKS"         : "settimane",
+    "YEARS"         : "anni"
+
 
 }
