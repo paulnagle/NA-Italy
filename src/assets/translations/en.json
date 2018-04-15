@@ -35,10 +35,12 @@
     "CANCEL"        : "Cancel",
     "GROUPBY"       : "Group by ",
     "AREA"          : "Area",
+    "CITY"          : "City",
     "LOCATION"      : "Locate",
     "COUNTRY"       : "Italy",
     "CANCEL"        : "Cancel",
     "DONE"          : "Done",
+    "OK"            : "OK",
     "NA"            : "Narcotics Anonymous",
     "MAP"           : "Map",
     "LOADINGMAP"    : "Loading map...",
@@ -49,6 +51,9 @@
     "CLEANYEARS"    : "Cleantime in years",
     "DAYS"          : "days",
     "WEEKS"         : "weeks",
-    "YEARS"         : "years"
+    "YEARS"         : "years",
+    "EVENTSDETAILS" : "For full details of NA events in Italy, visit ",
+    "LOADINGMEETINGS" : "Loading meetings"
+
 
 }

@@ -13,7 +13,7 @@ export class MeetingListProvider {
   }
 
   getApiUrlMap : string = this.italiaBMLT + "?switcher=GetSearchResults&sort_keys=longitude,latitude";
-  getApiUrlDay : string = this.italiaBMLT + "?switcher=GetSearchResults&sort_keys=weekday_tinyint";
+  getApiUrlDay : string = this.italiaBMLT + "?switcher=GetSearchResults&sort_keys=weekday_tinyint, start_time";
 
   getMeetings() {
     return this.http.get(this.getApiUrlMap);

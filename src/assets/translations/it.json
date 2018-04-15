@@ -33,12 +33,14 @@
     "COUNTY"        : "County (it)",
     "SEARCHBY"      : "Search By (it)",
     "CANCEL"        : "Cancel (it)",
-    "GROUPBY"       : "Group by (it)",
-    "AREA"          : "Area (it)",
+    "GROUPBY"       : "Raggruppa per ",
+    "AREA"          : "Zona",
+    "CITY"          : "Città",
     "LOCATION"      : "Locate (it)",
     "COUNTRY"       : "Country (it)",
-    "CANCEL"        : "Cancel (it)",
+    "CANCEL"        : "Cancella",
     "DONE"          : "Done (it)",
+    "OK"            : "OK",
     "NA"            : "Narcotics Anonymous (it)",
     "MAP"           : "Mappa",
     "LOADINGMAP"    : "Caricamento mappa...",
@@ -49,7 +51,10 @@
     "CLEANYEARS"    : "Tempo di Pulizia in anni",
     "DAYS"          : "giorni",
     "WEEKS"         : "settimane",
-    "YEARS"         : "anni"
+    "YEARS"         : "anni",
+    "EVENTSDETAILS" : "Per tutti i dettagli sugli eventi di NA Italy, visita ",
+    "LOADINGMEETINGS" : "Caricamento delle riunioni"
+
 
 
 }
