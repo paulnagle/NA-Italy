@@ -14,7 +14,7 @@
     </ion-list-header>
     <ion-item>
     <ion-label>{{'LANGUAGE' | translate}}</ion-label>
-    <ion-select [(ngModel)]="language" (ionChange)=selectLanguage()>
+    <ion-select [(ngModel)]="language" (ionChange)=selectLanguage() okText="{{ 'OK' | translate }}" cancelText="{{ 'CANCEL' | translate }}">
       <ion-option value="en">{{'ENGLISH' | translate}}</ion-option>
       <ion-option value="it">{{'ITALIAN' | translate}}</ion-option>
     </ion-select>

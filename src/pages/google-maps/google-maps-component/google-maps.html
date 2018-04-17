@@ -76,6 +76,7 @@
           <div *ngIf="marker.contact_email_1 ">{{marker.contact_email_1 | tidyDelimter }}<br></div>
           <div *ngIf="marker.train_lines ">Train: {{marker.train_lines | tidyDelimter }}<br></div>
           <div *ngIf="marker.bus_lines ">Bus: {{marker.bus_lines | tidyDelimter }}<br></div>
+          <div *ngIf="marker.formats"><i>{{'FORMATS' | translate }} {{ marker.formats | tidyDelimter }}</i><br></div>
           <button ion-button small (click)="openMapsLink(marker.latitude , marker.longitude)"><ion-icon name="map"></ion-icon>&nbsp;{{'MAP' | translate }}</button>
         </agm-info-window>
       </agm-marker>

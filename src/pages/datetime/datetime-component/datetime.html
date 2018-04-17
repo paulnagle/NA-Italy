@@ -13,7 +13,25 @@
 
   <ion-item>
     <ion-label>{{ 'ENTERCLEANDATE' | translate }}&nbsp;-> </ion-label>
-    <ion-datetime displayFormat="DD MMM YYYY" [(ngModel)]="myDate"></ion-datetime>
+    <ion-datetime
+      displayFormat="DD MMM YYYY"
+      [(ngModel)]="myDate"
+      cancelText="{{ 'CANCEL' | translate }}"
+      doneText="{{ 'OK' | translate }}"
+      monthShortNames=
+        "{{ 'JAN' | translate }},
+        {{ 'FEB' | translate }},
+        {{ 'MAR' | translate }},
+        {{ 'APR' | translate }},
+        {{ 'MAY' | translate }},
+        {{ 'JUN' | translate }},
+        {{ 'JUL' | translate }},
+        {{ 'AUG' | translate }},
+        {{ 'SEP' | translate }},
+        {{ 'OCT' | translate }},
+        {{ 'NOV' | translate }},
+        {{ 'DEC' | translate }}" >
+      </ion-datetime>
   </ion-item>
 
   <ion-card>
