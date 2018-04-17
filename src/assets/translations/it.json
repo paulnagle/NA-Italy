@@ -66,7 +66,9 @@
     "YEARS"         : "anni",
     "EVENTSDETAILS" : "Per tutti i dettagli sugli eventi di NA Italia, visita ",
     "LOADINGMEETINGS" : "Caricamento delle riunioni",
-    "EVENTSLOADER"  : "Caricamento eventi..."
+    "EVENTSLOADER"  : "Caricamento eventi...",
+    "FORMATS"       : "Formati:"
+
 
 
 
