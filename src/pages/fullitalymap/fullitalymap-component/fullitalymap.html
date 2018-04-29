@@ -15,7 +15,8 @@
     [longitude]="longitude"
     [zoom]="zoom"
     [disableDefaultUI]="false"
-    [zoomControl]="true">
+    [zoomControl]="true"
+    [streetViewControl]="false">
       <agm-marker-cluster [maxZoom]="18" imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m">
          <agm-marker
            *ngFor="let marker of meetingList "
