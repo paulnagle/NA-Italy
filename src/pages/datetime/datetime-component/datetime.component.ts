@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-
+import { Component }   from '@angular/core';
+import { Storage }     from '@ionic/storage';
+import   moment        from 'moment';
 
 @Component({
   templateUrl: 'datetime.html'
@@ -7,45 +8,41 @@ import { Component } from '@angular/core';
 
 export class DatetimeComponent {
 
-  myDate                  : any;
-  cleanTimeInMilliseconds : any;
-  todayInMilliseconds     : any;
+  cleanDate               : any;
+  myMomentCleanDate       : any;
   cleanTimeInDays         : any;
   cleanTimeInWeeks        : any;
+  cleanTimeInMonths       : any;
   cleanTimeInYears        : any;
+  cleanTimeHumanize       : any;
 
-  constructor() {
-    this.myDate = new Date().toISOString();
-    this.cleanTimeInMilliseconds = Date.parse(this.myDate);
-    this.todayInMilliseconds = Date.parse(this.myDate);
+  constructor( private storage     : Storage  ) {
+    this.cleanDate = new Date().toISOString();
+    this.myMomentCleanDate = moment(this.cleanDate);
+  }
+
+  ngOnInit() {
+    this.storage.get('cleanDate')
+    .then(value => {
+        if(value) {
+          this.cleanDate = value;
+        }
+    });
   }
 
   getCleanTime(){
-    var hour, minute, seconds;
+    this.myMomentCleanDate = moment(this.cleanDate);
 
-    this.cleanTimeInMilliseconds = Date.parse(this.myDate);
-    this.cleanTimeInMilliseconds = this.todayInMilliseconds - this.cleanTimeInMilliseconds;
+    this.cleanTimeInDays   = moment().diff(this.myMomentCleanDate, 'days');
+    this.cleanTimeInWeeks  = moment().diff(this.myMomentCleanDate, 'weeks');
+    this.cleanTimeInMonths = moment().diff(this.myMomentCleanDate, 'months');
+    this.cleanTimeInYears  = moment().diff(this.myMomentCleanDate, 'years');
+    this.cleanTimeHumanize = moment().diff(this.myMomentCleanDate);
 
-    seconds = Math.floor(this.cleanTimeInMilliseconds / 1000);
-    minute = Math.floor(seconds / 60);
-    seconds = seconds % 60;
-    hour = Math.floor(minute / 60);
-    minute = minute % 60;
-    this.cleanTimeInDays = Math.floor(hour / 24);
-    hour = hour % 24;
+    this.storage.set('cleanDate', this.cleanDate);
+
     return this.cleanTimeInDays
   }
 
-  getCleanTimeWeeks() {
-    this.cleanTimeInWeeks = Math.floor(this.cleanTimeInDays / 7);
-    return this.cleanTimeInWeeks;
-  }
-
-  getCleanTimeYears() {
-    this.cleanTimeInMilliseconds = Date.parse(this.myDate);
-    this.cleanTimeInMilliseconds = this.todayInMilliseconds - this.cleanTimeInMilliseconds;
-    this.cleanTimeInYears = Math.floor(this.cleanTimeInMilliseconds / 31536000000);
-    return this.cleanTimeInYears;
-  }
 
 }
