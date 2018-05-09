@@ -18,7 +18,7 @@ export class MeetingListProvider {
   }
 
   getCircleMeetings(lat, long, radius) {
-    var getApiUrlCircleMap : string = this.tomatoBMLT + "?switcher=GetSearchResults&geo_width_km=" + radius + "&long_val=" + long + "&lat_val=" + lat + "&sort_keys=longitude,latitude&callingApp=na-italia.org";
+    var getApiUrlCircleMap : string = this.italiaBMLT + "?switcher=GetSearchResults&geo_width_km=" + radius + "&long_val=" + long + "&lat_val=" + lat + "&sort_keys=longitude,latitude&callingApp=na-italia.org";
 
     return this.http.get(getApiUrlCircleMap);
   }
