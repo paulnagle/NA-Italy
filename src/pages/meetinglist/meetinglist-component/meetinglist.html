@@ -24,7 +24,7 @@
 <div *ngIf="HTMLGrouping == 'area'">
   <div *ngFor="let group1 of meetingListArea; let i = index" (click)="toggleGroup(i)" [ngClass]="{active: isGroupShown(i)}">
     <ion-item-divider color="dark"><h3>{{ group1[0].service_body_bigint }}</h3>
-      <ion-icon color="success" item-right [name]="isGroupShown(i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+      <ion-icon color="White" item-right [name]="isGroupShown(i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
     </ion-item-divider>
     <div *ngIf="isGroupShown(i)">
       <ion-list *ngFor="let group2 of group1; let j = index">
