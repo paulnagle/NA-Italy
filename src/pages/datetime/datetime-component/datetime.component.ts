@@ -9,7 +9,7 @@ import   moment        from 'moment';
 export class DatetimeComponent {
 
   cleanDate               : any;
-  myMomentCleanDate       : any;
+  momentCleanDate         : any;
   cleanTimeInDays         : any;
   cleanTimeInWeeks        : any;
   cleanTimeInMonths       : any;
@@ -17,31 +17,29 @@ export class DatetimeComponent {
   cleanTimeHumanize       : any;
 
   constructor( private storage     : Storage  ) {
-    this.cleanDate = new Date().toISOString();
-    this.myMomentCleanDate = moment(this.cleanDate);
+    this.cleanDate = moment().startOf('day').format();
   }
 
   ngOnInit() {
     this.storage.get('cleanDate')
     .then(value => {
         if(value) {
-          this.cleanDate = value;
+          this.cleanDate = moment(value).startOf('day').format();
+        } else {
+          console.log("ngOnInit: no storage :this.cleanDate", this.cleanDate);
         }
     });
   }
 
   getCleanTime(){
-    this.myMomentCleanDate = moment(this.cleanDate);
+    this.momentCleanDate = moment(this.cleanDate).startOf('day');
 
-    this.cleanTimeInDays   = moment().diff(this.myMomentCleanDate, 'days');
-    this.cleanTimeInWeeks  = moment().diff(this.myMomentCleanDate, 'weeks');
-    this.cleanTimeInMonths = moment().diff(this.myMomentCleanDate, 'months');
-    this.cleanTimeInYears  = moment().diff(this.myMomentCleanDate, 'years');
-    this.cleanTimeHumanize = moment().diff(this.myMomentCleanDate);
+    this.cleanTimeInDays   = moment().diff(this.momentCleanDate, 'days');
+    this.cleanTimeInWeeks  = moment().diff(this.momentCleanDate, 'weeks');
+    this.cleanTimeInMonths = moment().diff(this.momentCleanDate, 'months');
+    this.cleanTimeInYears  = moment().diff(this.momentCleanDate, 'years');
 
     this.storage.set('cleanDate', this.cleanDate);
-
-    return this.cleanTimeInDays
   }
 
 
