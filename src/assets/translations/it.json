@@ -1,7 +1,7 @@
 {
     "MENU"          : "Menu",
     "HOME"          : "Inizio",
-    "MEETINGLIST"   : "Ricerca per area",
+    "MEETINGLIST"   : "Ricerca riunione/i",
     "MENUS"         : "Menu",
     "JUSTFORTODAY"  : "Solo per oggi",
     "EVENTS"        : "Eventi",
@@ -45,6 +45,7 @@
     "COUNTY"        : "Circoscrizione",
     "SEARCHBY"      : "Cercato da",
     "CANCEL"        : "Cancella",
+    "GROUPBYHEADING": "Visualizza riunione/i",
     "GROUPBY"       : "Visualizza per ",
     "AREA"          : "Area",
     "CITY"          : "Provincia",
