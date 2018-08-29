@@ -69,6 +69,12 @@
         <splash height="480" src="resources/ios/splash/Default~iphone.png" width="320" />
         <icon height="1024" src="resources/ios/icon/icon-1024.png" width="1024" />
         <splash height="2732" src="resources/ios/splash/Default@2x~universal~anyany.png" width="2732" />
+        <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
+            <string>To determine distance from meeting locations</string>
+        </edit-config>
+        <edit-config file="*-Info.plist" mode="merge" target="NSLocationAlwaysUsageDescription">
+            <string>To determine distance from meeting locations</string>
+        </edit-config>
     </platform>
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />
@@ -86,8 +92,6 @@
     </feature>
     <preference name="SplashShowOnlyFirstTime" value="false" />
     <preference name="loadUrlTimeoutValue" value="100000" />
-    <engine name="ios" spec="~4.5.5" />
-    <engine name="android" spec="~7.0.0" />
     <plugin name="cordova-plugin-inappbrowser" spec="^3.0.0" />
     <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
     <plugin name="cordova-plugin-statusbar" spec="^2.4.2" />
@@ -95,4 +99,6 @@
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
     </plugin>
+    <engine name="ios" spec="4.5.5" />
+    <engine name="android" spec="7.0.0" />
 </widget>
