@@ -4,8 +4,7 @@ import { MeetingListProvider }    from '../../../providers/meeting-list/meeting-
 import { ServiceGroupsProvider }  from '../../../providers/service-groups/service-groups';
 import { TranslateService }       from '@ngx-translate/core';
 import { LoadingController }      from 'ionic-angular';
-import firstBy                    from 'thenby';
-import thenBy                     from 'thenby';
+import { firstBy }                from 'thenby';
 
 @Component({
   selector: 'page-meetinglist',
@@ -91,7 +90,7 @@ export class MeetinglistComponent {
           .thenBy("start_time")
         );
       }
-      
+
       this.dismissLoader();
     });
   }

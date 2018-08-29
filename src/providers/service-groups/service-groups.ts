@@ -13,7 +13,7 @@ export class ServiceGroupsProvider {
   constructor(public http: HttpClient) {
   }
 
-  getApiUrlServiceGroups : string = "https://na-italia.info/main_server/client_interface/json/?switcher=GetServiceBodies";
+  getApiUrlServiceGroups : string = "https://na-italia.info/main_server/client_interface/json/?switcher=GetServiceBodies&cache_buster=" + Math.random();
 
   getAllServiceGroups() {
     return this.http.get(this.getApiUrlServiceGroups);
